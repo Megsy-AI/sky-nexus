@@ -6,9 +6,9 @@ export const Route = createFileRoute("/auth")({
   component: SpaMount,
   head: () => ({ meta: [
     { title: "Sign in — elgiza" },
-    { name: "description", content: "Sign in to elgiza or explore the account-free sample workspace." },
+    { name: "description", content: "Sign in to elgiza or create your account for your AI workspace." },
     { property: "og:title", content: "Sign in — elgiza" },
-    { property: "og:description", content: "Access your elgiza workspace or try the public demo." },
+    { property: "og:description", content: "Sign in or create an account to access your elgiza workspace." },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
