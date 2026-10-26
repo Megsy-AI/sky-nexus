@@ -181,6 +181,15 @@ html .botanical-pricing:not(.megsy-checkout) .botanical-option[data-selected="tr
 html .botanical-pricing:not(.megsy-checkout) .botanical-details :where(p,span) { color: inherit; text-shadow: none; }
 .botanical-pricing:not(.megsy-checkout) .botanical-benefits::before { display: none; }
 html .botanical-pricing:not(.megsy-checkout) .botanical-subscribe { border-radius: 8px; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-benefits :where(li, svg),
+html .botanical-pricing:not(.megsy-checkout) .botanical-option :where(span, p, div) {
+  color: hsl(var(--foreground)) !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  text-shadow: none !important; filter: none !important;
+}
+html .botanical-pricing:not(.megsy-checkout) .botanical-content { min-height: 100dvh; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-details { margin-top: 48px; padding-top: 0; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-options { opacity: 1 !important; visibility: visible !important; }
 @layer properties {
   html body .ms-root .ms-card,
   html body .settings-reference-desktop .settings-profile-group,
