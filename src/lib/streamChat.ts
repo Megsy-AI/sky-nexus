@@ -750,6 +750,10 @@ export async function streamChat({
     }
 
     if (!terminalStreamError && !receivedAnyContent && !receivedToolOutput) {
+      if (!signal?.aborted && (await rescueWithFastChat())) {
+        await onDone();
+        return;
+      }
       onError?.("The chat service returned no answer. Please try again.");
       return;
     }
