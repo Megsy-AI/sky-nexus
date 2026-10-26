@@ -1,0 +1,86 @@
+[
+  {
+    "id": "lov_finding_0bdf574444a62780",
+    "severity": "error",
+    "title": "Anyone can sign in to another person’s account",
+    "description": "Anyone can use an unverified email address to sign in to another person’s account, so they can access that person’s private data."
+  },
+  {
+    "id": "lov_finding_15112ce2b8f9040b",
+    "severity": "error",
+    "title": "Anyone can expose another guest's saved memories",
+    "description": "Anyone can make chat use another guest's saved memories, so personal details may be disclosed in replies."
+  },
+  {
+    "id": "lov_finding_1c374a40d9c979d8",
+    "severity": "warn",
+    "title": "Anyone can make checkout show a false payment success",
+    "description": "Anyone can make checkout show that a payment succeeded when it did not, which could mislead customers about their purchase."
+  },
+  {
+    "id": "lov_finding_2384d15866a64642",
+    "severity": "error",
+    "title": "Anyone can use your WaveSpeed video account",
+    "description": "Anyone who obtains the published database migration can use your video provider account, so you may face unauthorized charges and loss of access."
+  },
+  {
+    "id": "lov_finding_34f5177aa78965c1",
+    "severity": "error",
+    "title": "Anyone can claim the provider-key administrator role",
+    "description": "Anyone can become the first provider-key administrator, so they can add, deactivate, or delete credentials used by your services."
+  },
+  {
+    "id": "lov_finding_41c7588d5357f33c",
+    "severity": "error",
+    "title": "Image editing fetches caller-chosen URLs",
+    "description": "A caller supplies reference-image URLs that the edge function fetches and forwards without constraining their destinations."
+  },
+  {
+    "id": "lov_finding_564a3021ed6ab936",
+    "severity": "error",
+    "title": "Video generation fetches caller-chosen frame URLs",
+    "description": "A video request supplies a start-frame URL that the edge function fetches and forwards without constraining its destination."
+  },
+  {
+    "id": "lov_finding_5cf6b2328debeba6_065498dc",
+    "severity": "error",
+    "title": "Anyone can add credits to any account",
+    "description": "Anyone can add credits to any account without paying, so your paid features can be used without revenue."
+  },
+  {
+    "id": "lov_finding_5cf6b2328debeba6_66700200",
+    "severity": "error",
+    "title": "Anyone can add credits to any account",
+    "description": "Anyone can add credits to any account without paying, so your paid features can be used without revenue."
+  },
+  {
+    "id": "lov_finding_628f47e1f38fba82_a1105c6f",
+    "severity": "warn",
+    "title": "Caller text becomes system-level model instructions",
+    "description": "Request.customSystem is appended to server-authored system text and sent to the model in a system-role message."
+  },
+  {
+    "id": "lov_finding_628f47e1f38fba82_daced21a",
+    "severity": "warn",
+    "title": "Anyone can control the chat model’s instructions",
+    "description": "Anyone can change the chat model’s instructions or message roles, so its answers can be manipulated into ignoring your intended behavior."
+  },
+  {
+    "id": "lov_finding_ba7a38acd0afb50f",
+    "severity": "warn",
+    "title": "Anyone can disrupt an integration connection",
+    "description": "Anyone can make an integration connection appear to fail with a message they choose, so users may be unable to finish connecting an app."
+  },
+  {
+    "id": "lov_finding_c5e5b432bdbe2336",
+    "severity": "error",
+    "title": "Anyone can guess public chat links",
+    "description": "Anyone can guess a public chat link and read its conversation, so private messages may be exposed."
+  },
+  {
+    "id": "lov_finding_f60f84d98fdcd67e",
+    "severity": "warn",
+    "title": "Caller controls the chat model's system instructions",
+    "description": "Anyone can supply system instructions and message roles to the chat model."
+  }
+]
