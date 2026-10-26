@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Remove the two extra reply action buttons beside like/dislike/copy, keeping those three controls
 - [ ] Diagnose slow fast-model time-to-first-answer; remove avoidable waits and show clean real-time operation steps for long tasks without fabricated activity
 - [ ] Audit current app with the supplied account, restore chat star/gradient accents and fix missing visible thinking text; verify live chat and representative pages
 - [x] Fix POST /api/chat local provider 503/502 via authenticated existing hosted-lane relay; 19 targeted regression tests pass; real signed-in greeting returned HTTP 200 and a visible Arabic answer without runtime errors
