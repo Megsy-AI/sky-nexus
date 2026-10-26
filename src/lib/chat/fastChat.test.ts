@@ -74,6 +74,7 @@ describe("tryFastChat request options", () => {
     vi.stubGlobal("fetch", fetchMock);
     await tryFastChat({ messages: [{ role: "user", content: "Hello" }], authToken: "caller-token", fingerprint: "f", onDelta: vi.fn() });
     expect(new Headers(fetchMock.mock.calls[0][1].headers).get("Authorization")).toBe("Bearer caller-token");
+    expect(JSON.parse(fetchMock.mock.calls[0][1].body).customSystem).toContain("FORMAT CONTRACT");
   });
 
   it("does not count reasoning-only completion as an answer", async () => {
