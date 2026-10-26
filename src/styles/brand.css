@@ -88,7 +88,8 @@ html .botanical-pricing .botanical-subscribe {
   --foreground: 0 0% 7%;
 }
 .auth-agent-orbit .ag-orb__body { background: var(--brand-orange); }
-html body .megsy-auth-screen .megsy-auth-primary {
+html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary,
+html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary:hover {
   background: var(--brand-orange) !important;
   color: var(--brand-on-orange) !important;
   -webkit-text-fill-color: var(--brand-on-orange) !important;
