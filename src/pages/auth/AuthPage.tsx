@@ -23,6 +23,8 @@ import { safeInternalPath } from "@/lib/security/safeRedirect";
 import { absoluteAuthRedirect, navigateAfterAuth } from "@/lib/authNavigation";
 
 import { getMfaRedirect } from "@/lib/mfa";
+import { registerAccount } from "@/lib/registration";
+import { Button } from "@/components/ui/button";
 import { pathForZone } from "@/lib/zoneRouting";
 import {
   emailSchema,
@@ -61,8 +63,9 @@ const AuthPage = () => {
   // so the first authenticated navigation is instant.
   usePrefetchOnIdle(["/chat", "/library"], 2000);
   const [email, setEmail] = useState("");
-  // Account intent comes from the existing public auth lookup, never a manual switch.
-  const authMode = "signin" as const;
+  // Never rely on a legacy public account lookup to decide identity intent.
+  const [authMode, setAuthMode] = useState<"signup" | "signin">("signin");
+  const [confirmationRequired, setConfirmationRequired] = useState(false);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [newPassword, setNewPassword] = useState("");
@@ -190,23 +193,11 @@ const AuthPage = () => {
       notifyMobileIntroError(`Too many attempts. Try again in ${Math.ceil(gate.resetMs / 1000)}s.`);
       return;
     }
-    setIsSubmitting(true);
-
-    try {
-      const { data, error } = await invokeAuth({ action: "check-email", email: normalizedEmail });
-      if (error) throw new Error(error.message);
-      if (typeof data?.exists !== "boolean") throw new Error(data?.error || "Could not check your email. Please try again.");
-      setEmail(normalizedEmail);
-      setUserExists(data.exists);
-      setHas2FA(data.two_factor_enabled === true);
-      setPassword("");
-      setNewPassword("");
-      setStep(data.exists ? "password" : "create-password");
-    } catch (e: any) {
-      notifyMobileIntroError(translateAuthError(e, "couldNotSendCode"));
-    } finally {
-      setIsSubmitting(false);
-    }
+    setEmail(normalizedEmail);
+    setPassword("");
+    setNewPassword("");
+    setConfirmationRequired(false);
+    setStep(authMode === "signup" ? "create-password" : "password");
   };
 
   const sendOTP = async (targetEmail?: string, _allowCreate = false) => {
@@ -303,13 +294,7 @@ const AuthPage = () => {
       notifyMobileIntroError(firstError(parsed) ?? authT("passwordMinLength"));
       return;
     }
-    try {
-      await sendOTP(email, true);
-      setOtpValues(["", "", "", "", "", ""]);
-      setStep("otp-signup");
-    } catch (error) {
-      notifyMobileIntroError(translateAuthError(error, "couldNotSendCode"));
-    }
+    await handleCreateAccount();
   };
 
   const handleOtpChange = (index: number, value: string) => {
@@ -501,49 +486,13 @@ const AuthPage = () => {
 
       const normalizedEmail = email.trim().toLowerCase();
       setPayRegion(region);
-      const { data, error } = await invokeAuth({
-        action: "signup",
-        email: normalizedEmail,
-        password: newPassword,
-      });
-      if (error) throw new Error(error.message);
-
-      // Account already exists (e.g. preview proxy skipped check-email and routed
-      // an existing user into signup). Try signing them in instead; otherwise
-      // bounce them back to the password screen with a friendly message.
-      if (!data?.success && /already exists/i.test(String(data?.error || ""))) {
-        const { error: signInErr } = await supabase.auth.signInWithPassword({
-          email: normalizedEmail,
-          password: newPassword,
-        });
-        if (!signInErr) {
-          const mfa = await getMfaRedirect(
-            redirectUrl || pathForZone("/chat", window.location.pathname),
-          );
-          if (mfa) {
-            navigate(mfa);
-            return;
-          }
-          if (redirectUrl) navigateAfterAuth(navigate, redirectUrl, window.location.search);
-          else navigate(pathForZone("/chat", window.location.pathname));
-          return;
-        }
-        setUserExists(true);
-        setStep("password");
-        setPassword("");
-        toast.message(authT("emailExists"), {
-          description: authT("emailExistsDesc"),
-        });
+      const result = await registerAccount(supabase.auth, normalizedEmail, newPassword, window.location.origin);
+      if (result.status === "confirmation-required") {
+        setConfirmationRequired(true);
+        setNewPassword("");
+        setStep("email");
         return;
       }
-
-      if (!data?.success) throw new Error(data?.error || "Could not create account");
-
-      const { error: signInErr } = await supabase.auth.signInWithPassword({
-        email: normalizedEmail,
-        password: newPassword,
-      });
-      if (signInErr) throw signInErr;
 
       if (cleanReferral) {
         try {
@@ -583,10 +532,15 @@ const AuthPage = () => {
         localStorage.removeItem("megsy_referral_code");
       } catch {}
       toast.success(authT("accountCreated"));
+      const mfa = await getMfaRedirect(redirectUrl || pathForZone("/chat", window.location.pathname));
+      if (mfa) {
+        navigate(mfa);
+        return;
+      }
       if (redirectUrl) navigateAfterAuth(navigate, redirectUrl, window.location.search);
       else navigate(pathForZone("/chat", window.location.pathname));
     } catch (e: any) {
-      toast.error(translateAuthError(e, "couldNotCreate"));
+      notifyMobileIntroError(translateAuthError(e, "couldNotCreate"));
     } finally {
       setIsSubmitting(false);
     }
@@ -772,7 +726,15 @@ const AuthPage = () => {
       <>
         <SEOHead title={authT("seoTitle")} description={authT("seoDesc")} path="/auth" noindex />
         <MobileAuthIntro
-          authMode={creatingPassword ? "signup" : "signin"}
+          authMode={authMode}
+          onAuthModeChange={mode => {
+            setAuthMode(mode);
+            setPassword("");
+            setNewPassword("");
+            setConfirmationRequired(false);
+            clearMobileError();
+            setStep("email");
+          }}
           onGoogle={handleGoogleLogin}
           onGithub={handleGithubLogin}
           onClose={() => navigate("/welcome")}
@@ -793,6 +755,20 @@ const AuthPage = () => {
           onForgotPassword={() => setStep("forgot-password")}
           error={mobileError}
         />
+        {confirmationRequired && <section className="mx-auto max-w-md px-6 pb-8 text-center" role="status">
+          <p className="text-sm text-foreground">{uiLang === "ar-eg" ? "راجع بريدك الإلكتروني واضغط رابط تأكيد الحساب، وبعدها سجل الدخول." : "Check your email and follow the account confirmation link, then sign in."}</p>
+          <Button variant="link" disabled={isSubmitting || countdown > 0} onClick={async () => {
+            setIsSubmitting(true);
+            try {
+              const { error } = await supabase.auth.resend({ type: "signup", email, options: { emailRedirectTo: window.location.origin } });
+              if (error) throw error;
+              startCountdown();
+              toast.success(authT("otpSent"));
+            } catch (error) { notifyMobileIntroError(translateAuthError(error, "couldNotSendCode")); }
+            finally { setIsSubmitting(false); }
+          }}>{uiLang === "ar-eg" ? "إعادة إرسال التأكيد" : "Resend confirmation"}</Button>
+        </section>}
+
       </>
     );
   }

@@ -1,6 +1,7 @@
 # Roadmap
+- [x] Repair registration using native signup and explicit account intent; real signup opened authenticated chat and survived reload; remove demo page/button. Hosted email/password and signup enabled; existing auto-confirm preserved, not changed.
 - [x] Restore original colored welcome/pricing images and supplied orange logo/icons while keeping buttons/text monochrome; verified public pages and demo on desktop/mobile, no runtime errors
-- [x] Add public account-free demo button; verified local replies, new chat, Arabic/English, both themes and mobile; zero protected generation calls and 100 passing tests
+- [x] Account-free demo retired at user request; its page, button, local replies and tests removed
 - [x] Simplify auth and pricing, remove decorative auth orbit and unify shared controls; monochrome media decision superseded by original-color requirement
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
 - [x] Restore orange primary actions against legacy desktop monochrome rules and neutralize dark surfaces; verify welcome/auth/pricing/integrations in both themes and mobile welcome-to-auth flow; 98 tests pass
