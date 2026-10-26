@@ -28,7 +28,7 @@ export function DemoWorkspace() {
       <div className="flex items-center gap-1">
         <Button variant="ghost" size="sm" onClick={() => setAr(!ar)}>{ar ? "English" : "العربية"}</Button>
         <Button variant="ghost" size="icon-sm" onClick={toggleTheme} aria-label={ar ? "تغيير المظهر" : "Toggle theme"} title={ar ? "تغيير المظهر" : "Toggle theme"}>{dark ? <Sun /> : <Moon />}</Button>
-        <Button variant="outline" size="sm" asChild><Link to="/$" params={{ _splat: "auth" }}><LogIn />{ar ? "تسجيل الدخول" : "Sign in"}</Link></Button>
+        <Button variant="outline" size="sm" asChild><Link to="/auth"><LogIn />{ar ? "تسجيل الدخول" : "Sign in"}</Link></Button>
       </div>
     </header>
     <div className="mx-auto flex max-w-6xl">
