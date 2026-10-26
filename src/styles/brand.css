@@ -79,3 +79,17 @@ html .botanical-pricing .botanical-subscribe {
   background: var(--brand-orange) !important;
   color: var(--brand-on-orange) !important;
 }
+.megsy-auth-screen {
+  --auth-ink: #111111;
+  --auth-muted: #737373;
+  --auth-control: #f2f2f2;
+  --auth-control-hover: #e8e8e8;
+  --auth-focus: var(--brand-orange);
+  --foreground: 0 0% 7%;
+}
+.auth-agent-orbit .ag-orb__body { background: var(--brand-orange); }
+html body .megsy-auth-screen .megsy-auth-primary {
+  background: var(--brand-orange) !important;
+  color: var(--brand-on-orange) !important;
+  -webkit-text-fill-color: var(--brand-on-orange) !important;
+}
