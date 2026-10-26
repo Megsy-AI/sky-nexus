@@ -149,9 +149,9 @@ html .megsy-agents button.bg-primary {
 @layer properties {
   html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary,
   html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary:hover {
-    background: var(--brand-orange) !important;
-    color: var(--brand-on-orange) !important;
-    -webkit-text-fill-color: var(--brand-on-orange) !important;
+    background: var(--auth-black) !important;
+    color: var(--auth-surface) !important;
+    -webkit-text-fill-color: var(--auth-surface) !important;
   }
 }
 /* One restrained control language; keep third-party marks and status colors intact. */
@@ -160,6 +160,10 @@ html .megsy-agents button.bg-primary {
 .megsy-auth-entry { height: auto; min-height: 100dvh; overflow: visible; }
 .megsy-auth-entry .megsy-auth-brand { min-height: 280px; flex: 1; padding: 48px 0; }
 .megsy-auth-entry .megsy-auth-tagline span { white-space: normal; }
+@media (min-width: 768px) {
+  .megsy-auth-entry { justify-content: center; gap: 40px; }
+  .megsy-auth-entry .megsy-auth-brand { flex: none; min-height: 0; padding: 0; }
+}
 html body .megsy-auth-screen .megsy-auth-pill,
 html body .megsy-auth-screen .megsy-auth-input { border-radius: 8px !important; }
 .welcome-hero-img, .botanical-art img { filter: grayscale(1); }
