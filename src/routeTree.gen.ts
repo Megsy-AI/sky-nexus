@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as DemoRouteImport } from './routes/demo'
 import { Route as ApiAnythingRouteImport } from './routes/api/anything'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as ApiClerkRouteImport } from './routes/api/clerk'
@@ -49,11 +48,6 @@ const SplatRoute = SplatRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoRoute = DemoRouteImport.update({
-  id: '/demo',
-  path: '/demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAnythingRoute = ApiAnythingRouteImport.update({
@@ -174,7 +168,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/auth': typeof AuthRoute
-  '/demo': typeof DemoRoute
   '/api/anything': typeof ApiAnythingRoute
   '/api/chat': typeof ApiChatRoute
   '/api/clerk': typeof ApiClerkRoute
@@ -202,7 +195,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/auth': typeof AuthRoute
-  '/demo': typeof DemoRoute
   '/api/anything': typeof ApiAnythingRoute
   '/api/chat': typeof ApiChatRoute
   '/api/clerk': typeof ApiClerkRoute
@@ -231,7 +223,6 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/auth': typeof AuthRoute
-  '/demo': typeof DemoRoute
   '/api/anything': typeof ApiAnythingRoute
   '/api/chat': typeof ApiChatRoute
   '/api/clerk': typeof ApiClerkRoute
@@ -261,7 +252,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/auth'
-    | '/demo'
     | '/api/anything'
     | '/api/chat'
     | '/api/clerk'
@@ -289,7 +279,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/auth'
-    | '/demo'
     | '/api/anything'
     | '/api/chat'
     | '/api/clerk'
@@ -317,7 +306,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/auth'
-    | '/demo'
     | '/api/anything'
     | '/api/chat'
     | '/api/clerk'
@@ -346,7 +334,6 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AuthRoute: typeof AuthRoute
-  DemoRoute: typeof DemoRoute
   ApiAnythingRoute: typeof ApiAnythingRoute
   ApiChatRoute: typeof ApiChatRoute
   ApiClerkRoute: typeof ApiClerkRoute
@@ -392,13 +379,6 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo': {
-      id: '/demo'
-      path: '/demo'
-      fullPath: '/demo'
-      preLoaderRoute: typeof DemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/anything': {
@@ -562,7 +542,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AuthRoute: AuthRoute,
-  DemoRoute: DemoRoute,
   ApiAnythingRoute: ApiAnythingRoute,
   ApiChatRoute: ApiChatRoute,
   ApiClerkRoute: ApiClerkRoute,
