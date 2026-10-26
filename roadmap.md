@@ -2,6 +2,7 @@
 - [x] Keep supplied logo orange with transparent exterior and cutout in both themes; update shared logo and app icons
 - [x] Apply white, black and orange shared palette to main controls, chat accents, settings and pricing; preserve service status and third-party brand colors
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
+- [ ] Continue orange identity review on public actions and neutral dark surfaces; verify logo, pricing, agents and integrations without signing in
 - [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
 - [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
 - [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal

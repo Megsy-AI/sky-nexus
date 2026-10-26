@@ -28,6 +28,7 @@
   --settings-pink: var(--brand-orange);
   --settings-blue: var(--brand-orange);
   --settings-yellow: var(--brand-orange);
+  --settings-green: var(--brand-orange);
   --paywall-accent: var(--brand-orange);
   --paywall-ink: var(--brand-on-orange);
   --public-accent: var(--brand-orange);
@@ -44,11 +45,34 @@ html.light, html[data-theme="light"] {
   --settings-canvas: #f5f5f5;
   --settings-backdrop: #f5f5f5;
   --settings-surface: #ffffff;
+  --settings-ink: #111111;
+  --settings-muted: #737373;
 }
 html.dark, html[data-theme="dark"] {
+  --background: 0 0% 7%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 12%;
+  --popover-foreground: 0 0% 98%;
+  --secondary: 0 0% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 0 0% 65%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 98%;
+  --border: 0 0% 24%;
+  --input: 0 0% 24%;
+  --sidebar-background: 0 0% 9%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-accent: 0 0% 16%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 0 0% 24%;
   --settings-canvas: #111111;
   --settings-backdrop: #111111;
   --settings-surface: #202020;
+  --settings-ink: #fafafa;
+  --settings-muted: #a3a3a3;
 }
 .elgiza-brand-mark { filter: none !important; }
 .welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
@@ -78,6 +102,22 @@ button[aria-label*="Scroll to bottom" i] {
 html .botanical-pricing .botanical-subscribe {
   background: var(--brand-orange) !important;
   color: var(--brand-on-orange) !important;
+}
+/* Public and agent sheets formerly forced primary actions back to monochrome. */
+html .megsy-public button.bg-primary,
+html .megsy-october-sheet button.bg-primary,
+html .megsy-agents button.bg-primary {
+  background: var(--brand-orange) !important;
+  background-image: none !important;
+  color: var(--brand-on-orange) !important;
+  -webkit-text-fill-color: var(--brand-on-orange) !important;
+}
+/* Decorative settings icons use the brand accent; danger rows retain their status. */
+@layer properties {
+  html body .ms-root .ms-icon-tile:not(.ms-tone-logout) svg,
+  html body .settings-reference-desktop .ms-icon-tile:not(.ms-tone-logout) svg {
+    color: var(--brand-orange) !important;
+  }
 }
 .megsy-auth-screen {
   --auth-ink: #111111;

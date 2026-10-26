@@ -1,4 +1,4 @@
-/** Transparent mark follows the page theme; legacy image props stay compatible. */
+/** Supplied transparent mark retains its original color in every theme. */
 import { useBrandLogo } from "@/hooks/useBrandLogo";
 import { cn } from "@/lib/utils";
 import { BRAND } from "@/lib/brand";
