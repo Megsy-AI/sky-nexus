@@ -1,4 +1,4 @@
-/** @doc BrandLogo — Megsy icon with a silver shimmer sweep that settles to white. */
+/** Display the supplied logo without recoloring its artwork. */
 import { useBrandLogo } from "@/hooks/useBrandLogo";
 import { cn } from "@/lib/utils";
 import { BRAND } from "@/lib/brand";
@@ -13,7 +13,7 @@ export function BrandLogo({ className, style, alt = BRAND.logoAlt, ...props }: B
       <img
         src={src}
         alt={alt}
-        className={cn("brand-logo-img object-contain", className)}
+        className={cn("object-contain", className)}
         style={style}
         {...props}
       />
@@ -23,7 +23,7 @@ export function BrandLogo({ className, style, alt = BRAND.logoAlt, ...props }: B
 
 export function BrandWord({ className, children = BRAND.name, ...props }: HTMLAttributes<HTMLSpanElement>) {
   return (
-    <span className={cn("brand-word", className)} {...props}>
+    <span className={cn("text-foreground", className)} {...props}>
       {children}
     </span>
   );
