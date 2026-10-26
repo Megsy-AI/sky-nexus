@@ -62,7 +62,7 @@
 :root:root:root:is(.dark, [data-theme="dark"]), html.dark, html[data-theme="dark"] {
   --primary: 0 0% 98%;
   --primary-foreground: 0 0% 7%;
-  --brand-mark-filter: invert(1);
+  --brand-mark-filter: none;
   --background: 0 0% 7%;
   --foreground: 0 0% 98%;
   --card: 0 0% 12%;
@@ -91,7 +91,7 @@
 .elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }
 .welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
 .welcome-logo { color: var(--w-fg); }
-.welcome-root .elgiza-brand-mark { filter: invert(1) !important; }
+.welcome-root .elgiza-brand-mark { filter: none !important; }
 .welcome-root .welcome-btn { background: var(--w-fg); color: var(--w-bg); }
 html.light, html.light body, html.light #root { background-color: hsl(var(--background)) !important; }
 .chat-ambient-glow { display: none; }
@@ -166,10 +166,20 @@ html .megsy-agents button.bg-primary {
 }
 html body .megsy-auth-screen .megsy-auth-pill,
 html body .megsy-auth-screen .megsy-auth-input { border-radius: 8px !important; }
-.welcome-hero-img, .botanical-art img { filter: grayscale(1); }
-html .botanical-pricing:not(.megsy-checkout) { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+.welcome-hero-img, .botanical-art img { filter: none; }
+/* Preserve the original artwork. Cover text stays light; controls retain contrast. */
+html .botanical-pricing:not(.megsy-checkout) {
+  --foreground: 0 0% 100%;
+  --background: 0 0% 7%;
+  --card: 0 0% 7%;
+  --border: 0 0% 45%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 7%;
+  background: hsl(var(--background)); color: hsl(var(--foreground));
+}
 .botanical-pricing:not(.megsy-checkout) .botanical-art,
-.botanical-pricing:not(.megsy-checkout) .botanical-scrim { display: none; }
+.botanical-pricing:not(.megsy-checkout) .botanical-scrim { display: block; }
+.botanical-pricing:not(.megsy-checkout) .botanical-scrim { background: linear-gradient(to bottom, hsl(var(--background) / .2), hsl(var(--background) / .45)); }
 html .botanical-pricing:not(.megsy-checkout) .botanical-heading *,
 html .botanical-pricing:not(.megsy-checkout) .botanical-benefits,
 html .botanical-pricing:not(.megsy-checkout) button.botanical-menu,
@@ -178,12 +188,13 @@ html .botanical-pricing:not(.megsy-checkout) .megsy-back {
 }
 html .botanical-pricing:not(.megsy-checkout) .botanical-heading { text-shadow: none; }
 html .botanical-pricing:not(.megsy-checkout) .botanical-option {
-  background: hsl(var(--card)); color: hsl(var(--foreground)); border-color: hsl(var(--border));
+  background: hsl(var(--card) / .85); color: hsl(var(--foreground)); border-color: hsl(var(--border));
   box-shadow: none; backdrop-filter: none; border-radius: 8px; text-shadow: none;
 }
 html .botanical-pricing:not(.megsy-checkout) .botanical-option[data-selected="true"] { border-color: hsl(var(--foreground)); transform: none; }
 html .botanical-pricing:not(.megsy-checkout) .botanical-details :where(p,span) { color: inherit; text-shadow: none; }
 .botanical-pricing:not(.megsy-checkout) .botanical-benefits::before { display: none; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-benefits li { text-shadow: 0 1px 3px hsl(var(--background)); }
 html .botanical-pricing:not(.megsy-checkout) .botanical-subscribe { border-radius: 8px; }
 html .botanical-pricing:not(.megsy-checkout) .botanical-benefits :where(li, svg),
 html .botanical-pricing:not(.megsy-checkout) .botanical-option :where(span, p, div) {

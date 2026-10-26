@@ -1,4 +1,4 @@
-import logoUrl from "@/assets/elgiza-mark-mono.png";
+import logoUrl from "@/assets/elgiza-mark.png";
 
 /** Display identity only. Storage keys, service IDs and existing URLs stay stable. */
 export const BRAND = {
