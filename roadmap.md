@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Repair real registration/sign-in and verify the result; remove the account-free demo and its entry button
 - [x] Restore original colored welcome/pricing images and supplied orange logo/icons while keeping buttons/text monochrome; verified public pages and demo on desktop/mobile, no runtime errors
 - [x] Add public account-free demo button; verified local replies, new chat, Arabic/English, both themes and mobile; zero protected generation calls and 100 passing tests
 - [x] Simplify auth and pricing, remove decorative auth orbit and unify shared controls; monochrome media decision superseded by original-color requirement
