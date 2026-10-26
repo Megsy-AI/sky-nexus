@@ -1203,7 +1203,7 @@ const ChatMessage = ({
   // (tools, services, long runs). Only a plain text chat answer with no steps
   // settles without a trace.
   const keepSettledTrace = Boolean(
-    persistentTrace ||
+    thoughtsText || persistentTrace ||
       (mode && mode !== "normal") ||
       settledTraceSteps.length > 0 ||
       (Array.isArray(toolParts) && toolParts.length > 0),

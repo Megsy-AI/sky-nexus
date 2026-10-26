@@ -95,6 +95,42 @@
 .welcome-root .welcome-btn { background: var(--w-fg); color: var(--w-bg); }
 html.light, html.light body, html.light #root { background-color: hsl(var(--background)) !important; }
 .chat-ambient-glow { display: none; }
+/* Restore the original chat accents locally, without recoloring other pages. */
+html body [data-shell="megsy"] {
+  --megsy-blue: #5b8def;
+  --megsy-gold: #e0b25a;
+  --megsy-gold-strong: #f5d489;
+  --chat-grad-a: 340 82% 56%;
+  --chat-grad-b: 22 95% 55%;
+  --chat-grad-c: 217 91% 60%;
+  --chat-accent-middle: 15 88% 55%;
+  --chat-accent-foreground: 0 0% 100%;
+  --chat-accent-gradient: linear-gradient(135deg, hsl(var(--chat-grad-a)), hsl(var(--chat-accent-middle)) 55%, hsl(var(--chat-grad-b)));
+}
+html body [data-shell="megsy"] .user-bubble.user-bubble {
+  background: var(--chat-accent-gradient) !important;
+  color: hsl(var(--chat-accent-foreground)) !important;
+}
+html body [data-shell="megsy"] .user-bubble.user-bubble :where(a, code, strong) { color: hsl(var(--chat-accent-foreground)) !important; }
+html body [data-shell="megsy"] .chat-composer-frame.chat-composer-frame {
+  border-color: transparent !important;
+  background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box, linear-gradient(120deg, hsl(var(--chat-grad-a) / .55), hsl(var(--chat-grad-b) / .45), hsl(var(--chat-grad-c) / .5)) border-box !important;
+}
+html body [data-shell="megsy"] .chat-composer-frame [data-testid="mobile-composer-send"] {
+  background: var(--chat-accent-gradient) !important;
+  color: hsl(var(--chat-accent-foreground)) !important;
+}
+/* Legacy HSL tokens are channel tuples, not standalone CSS colors. */
+html body .thinking-shimmer {
+  color: hsl(var(--muted-foreground));
+  background-image: linear-gradient(90deg, hsl(var(--muted-foreground)), hsl(var(--muted-foreground)) 40%, hsl(var(--foreground)) 50%, hsl(var(--muted-foreground)) 60%, hsl(var(--muted-foreground)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .thinking-shimmer, html body .ai-shimmer { animation: none; }
+}
 html .user-bubble.user-bubble,
 html.dark [data-shell="megsy"] .user-bubble.user-bubble {
   background: var(--brand-orange) !important;

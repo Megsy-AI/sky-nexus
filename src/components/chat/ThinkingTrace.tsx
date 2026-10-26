@@ -2,6 +2,7 @@ import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useUserLang } from "@/lib/authI18n";
 import ServiceIcon, { detectServiceKind } from "./ServiceIcon";
+import { Button } from "@/components/ui/button";
 
 export interface ThinkingTraceProps {
   /** Live status line — always the real current operation, never a placeholder. */
@@ -90,7 +91,7 @@ const ThinkingTrace = ({
     return out;
   }, [text]);
 
-  const lines = history.length ? history : reasoningLines;
+  const lines = Array.from(new Set([...history, ...reasoningLines]));
   const live = cleanTraceLine(status || "") || history[history.length - 1] || "";
   const headerKind = tool ? detectServiceKind(tool) : detectServiceKind(live);
 
@@ -124,16 +125,17 @@ const ThinkingTrace = ({
       dir={rtl ? "rtl" : undefined}
       data-tool-timeline={variant === "tools" ? true : undefined}
     >
-      <button
+      <Button
+        variant="ghost"
         type="button"
         onClick={() => lines.length && setOpen((v) => !v)}
         aria-expanded={open}
-        className="group inline-flex max-w-full items-center gap-2 rounded-full py-1 text-start text-muted-foreground transition-colors hover:text-foreground"
+        className="group h-auto max-w-full items-center gap-2 rounded-none px-0 py-1 text-start text-muted-foreground hover:bg-transparent hover:text-foreground"
       >
         <ServiceIcon kind={headerKind} active={!!active} size={15} />
         <span
           key={active ? label : "done"}
-          className={`min-w-0 truncate text-[13px] animate-in fade-in slide-in-from-bottom-1 duration-300 ${active ? "thinking-shimmer" : ""}`}
+          className={`min-w-0 whitespace-normal break-words text-[13px] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300 ${active ? "thinking-shimmer" : ""}`}
           aria-live="polite"
         >
           {label}
@@ -144,7 +146,7 @@ const ThinkingTrace = ({
             aria-hidden
           />
         )}
-      </button>
+      </Button>
 
       {open && lines.length > 0 && (
         <ol className="relative mt-1.5 flex min-w-0 flex-col gap-2 ps-[7px]">
