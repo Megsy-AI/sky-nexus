@@ -1,5 +1,81 @@
-/* The source is a black silhouette with transparent exterior and negative space. */
-:root { --brand-mark-filter: brightness(0); }
-html.dark, html[data-theme="dark"] { --brand-mark-filter: brightness(0) invert(1); }
-.welcome-root, .megsy-experience { --brand-mark-filter: brightness(0) invert(1); }
-.elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }
+/* Display-only palette. Legacy variable names remain compatibility aliases. */
+:root, html.light, html.dark, html[data-theme] {
+  --brand-orange: #ff6500;
+  --brand-orange-hsl: 24 100% 50%;
+  --brand-on-orange: #111111;
+  --brand-mark-filter: none;
+  --primary: var(--brand-orange-hsl);
+  --primary-foreground: 0 0% 7%;
+  --ring: var(--brand-orange-hsl);
+  --sidebar-primary: var(--brand-orange-hsl);
+  --sidebar-primary-foreground: 0 0% 7%;
+  --sidebar-ring: var(--brand-orange-hsl);
+  --megsy-blue: var(--brand-orange);
+  --megsy-gold: var(--brand-orange);
+  --megsy-gold-strong: var(--brand-orange);
+  --chat-grad-a: var(--brand-orange-hsl);
+  --chat-grad-b: var(--brand-orange-hsl);
+  --chat-grad-c: var(--brand-orange-hsl);
+  --sunset-pink: var(--brand-orange-hsl);
+  --sunset-coral: var(--brand-orange-hsl);
+  --sunset-orange: var(--brand-orange-hsl);
+  --sunset-gold: var(--brand-orange-hsl);
+  --sunset-foreground: 0 0% 7%;
+  --gradient-sunset: linear-gradient(var(--brand-orange), var(--brand-orange));
+  --sunset-grain: none;
+  --sunset-grain-soft: none;
+  --settings-violet: var(--brand-orange);
+  --settings-pink: var(--brand-orange);
+  --settings-blue: var(--brand-orange);
+  --settings-yellow: var(--brand-orange);
+  --paywall-accent: var(--brand-orange);
+  --paywall-ink: var(--brand-on-orange);
+  --public-accent: var(--brand-orange);
+}
+html.light, html[data-theme="light"] {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 7%;
+  --secondary: 0 0% 95%;
+  --muted: 0 0% 95%;
+  --accent: 0 0% 93%;
+  --border: 0 0% 88%;
+  --input: 0 0% 88%;
+  --sidebar-background: 0 0% 98%;
+  --settings-canvas: #f5f5f5;
+  --settings-backdrop: #f5f5f5;
+  --settings-surface: #ffffff;
+}
+html.dark, html[data-theme="dark"] {
+  --settings-canvas: #111111;
+  --settings-backdrop: #111111;
+  --settings-surface: #202020;
+}
+.elgiza-brand-mark { filter: none !important; }
+.welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
+.welcome-logo { color: var(--brand-orange); }
+.welcome-root .welcome-btn { background: var(--brand-orange); color: var(--brand-on-orange); }
+html.light, html.light body, html.light #root { background-color: hsl(var(--background)) !important; }
+.chat-ambient-glow { display: none; }
+html .user-bubble.user-bubble,
+html.dark [data-shell="megsy"] .user-bubble.user-bubble {
+  background: var(--brand-orange) !important;
+  color: var(--brand-on-orange) !important;
+  box-shadow: none !important;
+}
+.user-bubble.user-bubble :where(a, code, strong) { color: var(--brand-on-orange) !important; }
+.chat-composer-frame.chat-composer-frame {
+  background: hsl(var(--card)) !important;
+  border-color: hsl(var(--border)) !important;
+  box-shadow: none !important;
+}
+.chat-composer-frame.chat-composer-frame:focus-within { border-color: var(--brand-orange) !important; }
+.chat-composer-frame [data-testid="mobile-composer-send"],
+button[aria-label*="Scroll to bottom" i] {
+  background: var(--brand-orange) !important;
+  color: var(--brand-on-orange) !important;
+  box-shadow: none !important;
+}
+html .botanical-pricing .botanical-subscribe {
+  background: var(--brand-orange) !important;
+  color: var(--brand-on-orange) !important;
+}
