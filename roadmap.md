@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Add and verify a public account-free demo button and local sample conversation; never bypass protected services
+- [ ] Replace orange identity with monochrome controls and logo; clean shared page styles and verify public pages
 - [x] Keep supplied logo orange with transparent exterior and cutout in both themes; update shared logo and app icons
 - [x] Apply white, black and orange shared palette to main controls, chat accents, settings and pricing; preserve service status and third-party brand colors
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
