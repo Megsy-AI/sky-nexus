@@ -4,6 +4,7 @@ import { useUserLang } from "@/lib/authI18n";
 import { useLocation } from "react-router-dom";
 import { AgentOrb, type OrbState } from "@/components/agent/AgentOrb";
 import { useWorkspaceStore } from "@/lib/agentsky/store";
+import { BRAND } from "@/lib/brand";
 
 interface DesktopGreetingProps {
   userName: string | null | undefined;
@@ -57,7 +58,7 @@ export const DesktopGreeting = ({ userName }: DesktopGreetingProps) => {
           >
             <AgentOrb size={88} state={presence} color={agent?.isDefault ? "aurora" : agent?.color ?? "aurora"} />
           </motion.div>
-          <p className="mb-2 text-sm text-muted-foreground">{lang === "ar-eg" ? `أهلاً${userName ? ` يا ${userName.split(" ")[0]}` : ""}، أنا ${agent?.name ?? "Megsy"}` : `Hello${userName ? `, ${userName.split(" ")[0]}` : ""}. I'm ${agent?.name ?? "Megsy"}`}</p>
+          <p className="mb-2 text-sm text-muted-foreground">{lang === "ar-eg" ? `أهلاً${userName ? ` يا ${userName.split(" ")[0]}` : ""}، أنا ${agent?.name ?? BRAND.name}` : `Hello${userName ? `, ${userName.split(" ")[0]}` : ""}. I'm ${agent?.name ?? BRAND.name}`}</p>
 
         </motion.div>
       </div>
