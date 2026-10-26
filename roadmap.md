@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Comprehensive project audit: automated tests, all-page desktop/mobile checks, authenticated core flow, API safety, performance and black-and-white design; document verified findings and blockers
 - [ ] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits
 - [ ] Use connected Google tools to identify customer acquisition opportunities for Megsy; report concrete findings and blockers
 - [x] Preserve and verify searched phone and food images in generated answers (iPhone 16, Galaxy S25, Koshary and Falafel loaded in browser)
