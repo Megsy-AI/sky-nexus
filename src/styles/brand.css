@@ -89,6 +89,22 @@
   --settings-muted: #a3a3a3;
 }
 .elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }
+.plus-attachment-backdrop { position: fixed; inset: 0; z-index: 55; background: hsl(var(--foreground) / .45); }
+html body .plus-attachment-panel[data-plus-menu] {
+  position: fixed; z-index: 60; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  width: min(560px, calc(100% - 28px)); padding: 22px; border-radius: 30px; border: 0;
+  background: hsl(var(--background)) !important; backdrop-filter: none !important; box-shadow: none !important;
+}
+html body .plus-attachment-panel::before, html body .plus-attachment-panel::after { display: none !important; }
+.plus-attachment-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+html body .plus-attachment-panel .plus-attachment-choice {
+  display: flex; flex-direction: column; gap: 16px; height: auto; aspect-ratio: 1.12; min-width: 0;
+  border: 0 !important; border-radius: 24px; background: hsl(var(--muted) / .5) !important; color: hsl(var(--foreground)) !important;
+  font-size: 16px; font-weight: 400; box-shadow: none !important;
+}
+html body .plus-attachment-panel .plus-attachment-choice svg { width: 28px; height: 28px; color: hsl(var(--foreground)) !important; }
+html body .plus-attachment-panel .plus-attachment-choice:hover { background: hsl(var(--muted)) !important; }
+@media (min-width: 768px) { html body .plus-attachment-panel[data-plus-menu] { bottom: 125px; } }
 .welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
 .welcome-logo { color: var(--w-fg); }
 .welcome-root .elgiza-brand-mark { filter: none !important; }
