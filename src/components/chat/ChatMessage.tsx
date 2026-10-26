@@ -1113,9 +1113,9 @@ const ChatMessage = ({
     };
   }, [content, role]);
 
-  // Smooth streaming: reveal assistant text character-by-character (~60fps)
-  // so streamed tokens feel like ChatGPT/Claude instead of arriving in chunks.
-  const displayContent = useSmoothText(rawDisplayContent, role === "assistant" && !!isStreaming);
+  // Render provider deltas directly. Artificial character slicing can split
+  // emphasis/fences and leave interactive programs disabled or malformed.
+  const displayContent = useSmoothText(rawDisplayContent, false);
   const learnRenderContent = role === "assistant" ? rawDisplayContent : displayContent;
   const hasLearnCardContent = role === "assistant" && hasLearnCards(learnRenderContent);
   const hasConnectCardContent = role === "assistant" && hasConnectCards(learnRenderContent);
