@@ -1,6 +1,7 @@
 # Roadmap
+- [ ] Restore original colored images and supplied orange logo/icons while keeping buttons/text monochrome; verify public pages and demo
 - [x] Add public account-free demo button; verified local replies, new chat, Arabic/English, both themes and mobile; zero protected generation calls and 100 passing tests
-- [x] Replace orange identity with monochrome controls, logo and app icons; simplify auth and pricing, remove decorative auth orbit and unify shared controls
+- [x] Simplify auth and pricing, remove decorative auth orbit and unify shared controls; monochrome media decision superseded by original-color requirement
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
 - [x] Restore orange primary actions against legacy desktop monochrome rules and neutralize dark surfaces; verify welcome/auth/pricing/integrations in both themes and mobile welcome-to-auth flow; 98 tests pass
 - [ ] Verify protected agents/settings views with an authenticated session — no email-verification bypass; public selector did not render signed out
