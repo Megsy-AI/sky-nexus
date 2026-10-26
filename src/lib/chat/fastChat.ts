@@ -1,5 +1,6 @@
 import { edgeAnonKey, edgeUrl } from "@/lib/edgeRuntime";
 import { isTrivialTurn } from "./trivialTurn";
+import { GENUI_PROMPT } from "@/components/chat/genui/prompt";
 /**
  * Fast lane for simple chat turns.
  *
@@ -105,6 +106,7 @@ export async function tryFastChat({
   const proxyBody = JSON.stringify({
     messages,
     lane: "fast",
+    customSystem: GENUI_PROMPT,
     ...(force ? { force: true } : {}),
     thinking: thinking === true,
     ...(requestedMaxTokens ? { maxTokens: requestedMaxTokens } : {}),
@@ -148,6 +150,7 @@ export async function tryFastChat({
         },
         body: JSON.stringify({
           messages,
+          customSystem: GENUI_PROMPT,
           thinking: thinking === true,
           ...(routingContext ? { routingContext } : {}),
           ...(force ? { force: true } : {}),
