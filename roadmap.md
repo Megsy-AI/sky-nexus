@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Fix recurring “حصل تأخير في توليد الرد، لكن طلبك وصل” by tracing empty/incomplete generation handling, not hiding a real failure
 - [ ] Remove the two extra reply action buttons beside like/dislike/copy, keeping those three controls
 - [ ] Diagnose slow fast-model time-to-first-answer; remove avoidable waits and show clean real-time operation steps for long tasks without fabricated activity
 - [ ] Audit current app with the supplied account, restore chat star/gradient accents and fix missing visible thinking text; verify live chat and representative pages
