@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Diagnose slow fast-model time-to-first-answer; remove avoidable waits and show clean real-time operation steps for long tasks without fabricated activity
 - [ ] Audit current app with the supplied account, restore chat star/gradient accents and fix missing visible thinking text; verify live chat and representative pages
 - [x] Fix POST /api/chat local provider 503/502 via authenticated existing hosted-lane relay; 19 targeted regression tests pass; real signed-in greeting returned HTTP 200 and a visible Arabic answer without runtime errors
 - [x] Repair registration using native signup and explicit account intent; real signup opened authenticated chat and survived reload; remove demo page/button. Hosted email/password and signup enabled; existing auto-confirm preserved, not changed.
