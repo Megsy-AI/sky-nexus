@@ -1,13 +1,13 @@
 # Roadmap
-- [x] Keep supplied logo orange with transparent exterior and cutout in both themes; update shared logo and app icons
-- [x] Apply white, black and orange shared palette to main controls, chat accents, settings and pricing; preserve service status and third-party brand colors
+- [x] Add public account-free demo button; verified local replies, new chat, Arabic/English, both themes and mobile; zero protected generation calls and 100 passing tests
+- [x] Replace orange identity with monochrome controls, logo and app icons; simplify auth and pricing, remove decorative auth orbit and unify shared controls
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
 - [x] Restore orange primary actions against legacy desktop monochrome rules and neutralize dark surfaces; verify welcome/auth/pricing/integrations in both themes and mobile welcome-to-auth flow; 98 tests pass
 - [ ] Verify protected agents/settings views with an authenticated session — no email-verification bypass; public selector did not render signed out
 - [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
 - [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
 - [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal
-- [ ] Complete secondary-page/export/server-copy rebrand and white/black/orange review; settings/help/memory/greeting/404 second batch done, dashboard project name/domain not changed
+- [ ] Complete secondary-page/export/server-copy rebrand and monochrome review; protected settings/agents rendering requires a real session, dashboard project name/domain not changed
 - [x] Comprehensive available project audit: 98 automated tests, 114 desktop routes, 24 mobile checks, 11 unauthenticated API boundaries, security/dependency review and documented design/performance findings; report in docs/audits/project-audit-2026-10-26.md
 - [x] Continue audit without signing in or bypassing email verification; protected-page functional checks explicitly excluded per user instruction
 - [ ] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits

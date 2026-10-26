@@ -1,14 +1,14 @@
 /* Display-only palette. Legacy variable names remain compatibility aliases. */
 :root:root:root, html.light, html.dark, html[data-theme] {
-  --brand-orange: #ff6500;
-  --brand-orange-hsl: 24 100% 50%;
-  --brand-on-orange: #111111;
+  --brand-orange: hsl(var(--primary));
+  --brand-orange-hsl: var(--primary);
+  --brand-on-orange: hsl(var(--primary-foreground));
   --brand-mark-filter: none;
-  --primary: var(--brand-orange-hsl);
-  --primary-foreground: 0 0% 7%;
+  --primary: 0 0% 7%;
+  --primary-foreground: 0 0% 100%;
   --ring: var(--brand-orange-hsl);
-  --sidebar-primary: var(--brand-orange-hsl);
-  --sidebar-primary-foreground: 0 0% 7%;
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
   --sidebar-ring: var(--brand-orange-hsl);
   --megsy-blue: var(--brand-orange);
   --megsy-gold: var(--brand-orange);
@@ -20,7 +20,7 @@
   --sunset-coral: var(--brand-orange-hsl);
   --sunset-orange: var(--brand-orange-hsl);
   --sunset-gold: var(--brand-orange-hsl);
-  --sunset-foreground: 0 0% 7%;
+  --sunset-foreground: var(--primary-foreground);
   --gradient-sunset: linear-gradient(var(--brand-orange), var(--brand-orange));
   --sunset-grain: none;
   --sunset-grain-soft: none;
@@ -60,6 +60,9 @@
   --settings-muted: #737373;
 }
 :root:root:root:is(.dark, [data-theme="dark"]), html.dark, html[data-theme="dark"] {
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 7%;
+  --brand-mark-filter: invert(1);
   --background: 0 0% 7%;
   --foreground: 0 0% 98%;
   --card: 0 0% 12%;
@@ -85,10 +88,11 @@
   --settings-ink: #fafafa;
   --settings-muted: #a3a3a3;
 }
-.elgiza-brand-mark { filter: none !important; }
+.elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }
 .welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
-.welcome-logo { color: var(--brand-orange); }
-.welcome-root .welcome-btn { background: var(--brand-orange); color: var(--brand-on-orange); }
+.welcome-logo { color: var(--w-fg); }
+.welcome-root .elgiza-brand-mark { filter: invert(1) !important; }
+.welcome-root .welcome-btn { background: var(--w-fg); color: var(--w-bg); }
 html.light, html.light body, html.light #root { background-color: hsl(var(--background)) !important; }
 .chat-ambient-glow { display: none; }
 html .user-bubble.user-bubble,
@@ -131,6 +135,9 @@ html .megsy-agents button.bg-primary {
   }
 }
 .megsy-auth-screen {
+  --primary: 0 0% 7%;
+  --primary-foreground: 0 0% 100%;
+  --brand-mark-filter: none;
   --auth-ink: #111111;
   --auth-muted: #737373;
   --auth-control: #f2f2f2;
@@ -138,12 +145,57 @@ html .megsy-agents button.bg-primary {
   --auth-focus: var(--brand-orange);
   --foreground: 0 0% 7%;
 }
-.auth-agent-orbit .ag-orb__body { background: var(--brand-orange); }
+.auth-agent-orbit { display: none; }
 @layer properties {
   html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary,
   html body .megsy-auth-screen.megsy-auth-screen .megsy-auth-pill.megsy-auth-primary:hover {
-    background: var(--brand-orange) !important;
-    color: var(--brand-on-orange) !important;
-    -webkit-text-fill-color: var(--brand-on-orange) !important;
+    background: var(--auth-black) !important;
+    color: var(--auth-surface) !important;
+    -webkit-text-fill-color: var(--auth-surface) !important;
   }
+}
+/* One restrained control language; keep third-party marks and status colors intact. */
+.elgiza-demo { font-family: "Manrope", system-ui, sans-serif; }
+.elgiza-demo button, .elgiza-demo a { letter-spacing: 0; }
+.megsy-auth-entry { height: auto; min-height: 100dvh; overflow: visible; }
+.megsy-auth-entry .megsy-auth-brand { min-height: 280px; flex: 1; padding: 48px 0; }
+.megsy-auth-entry .megsy-auth-tagline span { white-space: normal; }
+@media (min-width: 768px) {
+  .megsy-auth-entry { justify-content: center; gap: 40px; }
+  .megsy-auth-entry .megsy-auth-brand { flex: none; min-height: 0; padding: 0; }
+}
+html body .megsy-auth-screen .megsy-auth-pill,
+html body .megsy-auth-screen .megsy-auth-input { border-radius: 8px !important; }
+.welcome-hero-img, .botanical-art img { filter: grayscale(1); }
+html .botanical-pricing:not(.megsy-checkout) { background: hsl(var(--background)); color: hsl(var(--foreground)); }
+.botanical-pricing:not(.megsy-checkout) .botanical-art,
+.botanical-pricing:not(.megsy-checkout) .botanical-scrim { display: none; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-heading *,
+html .botanical-pricing:not(.megsy-checkout) .botanical-benefits,
+html .botanical-pricing:not(.megsy-checkout) button.botanical-menu,
+html .botanical-pricing:not(.megsy-checkout) .megsy-back {
+  color: hsl(var(--foreground)) !important; text-shadow: none; filter: none;
+}
+html .botanical-pricing:not(.megsy-checkout) .botanical-heading { text-shadow: none; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-option {
+  background: hsl(var(--card)); color: hsl(var(--foreground)); border-color: hsl(var(--border));
+  box-shadow: none; backdrop-filter: none; border-radius: 8px; text-shadow: none;
+}
+html .botanical-pricing:not(.megsy-checkout) .botanical-option[data-selected="true"] { border-color: hsl(var(--foreground)); transform: none; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-details :where(p,span) { color: inherit; text-shadow: none; }
+.botanical-pricing:not(.megsy-checkout) .botanical-benefits::before { display: none; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-subscribe { border-radius: 8px; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-benefits :where(li, svg),
+html .botanical-pricing:not(.megsy-checkout) .botanical-option :where(span, p, div) {
+  color: hsl(var(--foreground)) !important;
+  -webkit-text-fill-color: hsl(var(--foreground)) !important;
+  text-shadow: none !important; filter: none !important;
+}
+html .botanical-pricing:not(.megsy-checkout) .botanical-content { min-height: 100dvh; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-details { margin-top: 48px; padding-top: 0; }
+html .botanical-pricing:not(.megsy-checkout) .botanical-options { opacity: 1 !important; visibility: visible !important; }
+@layer properties {
+  html body .ms-root .ms-card,
+  html body .settings-reference-desktop .settings-profile-group,
+  html body .settings-reference-desktop .settings-desktop-group { border-radius: 8px !important; backdrop-filter: none !important; box-shadow: none !important; }
 }
