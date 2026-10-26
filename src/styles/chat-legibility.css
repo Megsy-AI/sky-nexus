@@ -69,8 +69,14 @@
 }
 
 .prose-chat strong {
-  color: hsl(var(--foreground)) !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
   font-weight: 700;
+}
+.prose-chat strong :where(bdi, span), .user-bubble strong :where(bdi, span) {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-weight: inherit;
 }
 
 .prose-chat p,

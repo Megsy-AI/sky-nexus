@@ -17,8 +17,6 @@ import {
   Terminal as TerminalIcon,
   Brain,
   Download,
-  RefreshCw,
-  GitBranch,
 } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { m as motion, AnimatePresence } from "framer-motion";
@@ -1115,9 +1113,9 @@ const ChatMessage = ({
     };
   }, [content, role]);
 
-  // Smooth streaming: reveal assistant text character-by-character (~60fps)
-  // so streamed tokens feel like ChatGPT/Claude instead of arriving in chunks.
-  const displayContent = useSmoothText(rawDisplayContent, role === "assistant" && !!isStreaming);
+  // Render provider deltas directly. Artificial character slicing can split
+  // emphasis/fences and leave interactive programs disabled or malformed.
+  const displayContent = useSmoothText(rawDisplayContent, false);
   const learnRenderContent = role === "assistant" ? rawDisplayContent : displayContent;
   const hasLearnCardContent = role === "assistant" && hasLearnCards(learnRenderContent);
   const hasConnectCardContent = role === "assistant" && hasConnectCards(learnRenderContent);
@@ -1203,7 +1201,7 @@ const ChatMessage = ({
   // (tools, services, long runs). Only a plain text chat answer with no steps
   // settles without a trace.
   const keepSettledTrace = Boolean(
-    persistentTrace ||
+    thoughtsText || persistentTrace ||
       (mode && mode !== "normal") ||
       settledTraceSteps.length > 0 ||
       (Array.isArray(toolParts) && toolParts.length > 0),
@@ -2171,24 +2169,6 @@ const ChatMessage = ({
                     <Copy className="w-[15px] h-[15px]" strokeWidth={1.75} />
                   )}
                 </AIMessageAction>
-                {role === "assistant" && onRegenerate && (
-                  <AIMessageAction
-                    onClick={onRegenerate}
-                    tooltip={label("Regenerate", "إعادة توليد")}
-                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
-                  >
-                    <RefreshCw className="w-[15px] h-[15px]" strokeWidth={1.75} />
-                  </AIMessageAction>
-                )}
-                {role === "assistant" && onBranch && (
-                  <AIMessageAction
-                    onClick={onBranch}
-                    tooltip={label("Branch from here", "تفريع من هنا")}
-                    className="h-9 w-9 rounded-md border-0 bg-transparent text-muted-foreground/70 shadow-none hover:bg-transparent hover:text-foreground"
-                  >
-                    <GitBranch className="w-[15px] h-[15px]" strokeWidth={1.75} />
-                  </AIMessageAction>
-                )}
                 {downloadUrl && (
                   <AIMessageAction
                     onClick={() => {

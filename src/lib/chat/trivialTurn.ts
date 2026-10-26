@@ -1,7 +1,7 @@
 type TurnMessage = { role: string; content: unknown };
 
 const GREETING =
-  /^(?:hi|hey|hello|yo|sup|thanks|thank you|ok|okay|good (?:morning|evening|night)|اهلا|أهلا|هاي|مرحبا|السلام عليكم|صباح الخير|مساء الخير|شكرا|شكرًا|تمام|ازيك|إزيك|كيف الحال|عامل ايه)[\s!.،؟?]*$/iu;
+  /^(?:hi|hey|hello|yo|sup|thanks|thank you|ok|okay|good (?:morning|evening|night)|اهلا|أهلا|هلا|هاي|مرحبا|السلام عليكم|صباح الخير|مساء الخير|شكرا|شكرًا|تمام|ازيك|إزيك|كيف الحال|عامل ايه)[\s!.،؟?]*$/iu;
 const NUMBER = "[0-9٠-٩]+(?:[.,٫][0-9٠-٩]+)?";
 const SIMPLE_ARITHMETIC = new RegExp(
   `^(?:(?:what\\s+is|calculate)\\s+|(?:كم(?:\\s+يساوي)?|ما\\s+ناتج)\\s*)?${NUMBER}\\s*[+\\-−*×÷/]\\s*${NUMBER}(?:\\s*[?؟.!،])?(?:\\s*(?:أجب|اكتب|answer|reply)[^\\n]{0,28})?$`,

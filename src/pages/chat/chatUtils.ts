@@ -170,7 +170,10 @@ export const makeLeakedToolStreamSanitizer = () => {
       return safePrefix + stripLeakedToolText(buffer);
     }
     if (force) {
-      const safe = markers.some((marker) => marker.startsWith(lower.trim())) ? "" : buffer;
+      // A closing code/UI fence shares the prefix of internal tool fences.
+      // Keep bare backticks at EOF so completed programs become interactive.
+      const closingFence = /^`{1,3}$/.test(buffer.trim());
+      const safe = !closingFence && markers.some((marker) => marker.startsWith(lower.trim())) ? "" : buffer;
       buffer = "";
       return stripLeakedToolText(safe);
     }

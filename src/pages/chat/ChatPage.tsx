@@ -2579,6 +2579,14 @@ const ChatPage = () => {
     if (fastshotCard || !r || r.top <= 0 || r.height === 0) {
       r = fastshotCard?.getBoundingClientRect() ?? r;
     }
+    if (plusView === "main") {
+      return createPortal(<>
+        <div className="plus-attachment-backdrop" onClick={() => setPlusMenuOpen(false)} />
+        <div role="dialog" aria-label="Add to chat" className="plus-attachment-panel" data-plus-menu>
+          {renderPlusContent()}
+        </div>
+      </>, document.body);
+    }
     if (isMobileViewport) {
       const vh = window.innerHeight;
       // Open the tools panel as a proper full-height drawer. The previous

@@ -1346,30 +1346,15 @@ export async function runChatStreamTurn(opts: RunChatStreamTurnOptions): Promise
         streamedProducts.length === 0 &&
         !hasGeneratedVideo
       ) {
-        assistantContent = isArabicTurn
-          ? "حصل تأخير في توليد الرد، لكن طلبك وصل. جرب تبعته تاني أو تخليه أقصر."
-          : "There was a delay generating the response, but your request was received. Try sending it again or make it shorter.";
-        setMessages((prev) => {
-          const assistantIndex = prev.findIndex((m) => m.clientId === `assistant-${localTurnId}`);
-          const targetIndex = assistantIndex >= 0 ? assistantIndex : prev.length - 1;
-          const last = prev[targetIndex];
-          if (last?.role !== "assistant")
-            return [
-              ...prev,
-              {
-                role: "assistant",
-                content: assistantContent,
-                clientId: `assistant-${localTurnId}`,
-              },
-            ];
-          const next = prev.slice();
-          next[targetIndex] = {
-            ...last,
-            content: assistantContent,
-            ...(isDeepResearch ? { mode: "deep-research" as const } : {}),
-          };
-          return next;
-        });
+        // A completed transport is not proof of a completed generation.
+        // Cancellation is not a delay, and an empty result must remain a
+        // retryable failed turn rather than be saved as an assistant answer.
+        if (controller.signal.aborted) return;
+        failTurnWithError(isArabicTurn
+          ? "لم تُرجع خدمة المحادثة إجابة. يمكنك إعادة المحاولة."
+          : "The chat service returned no answer. You can retry.");
+        return;
+
       }
       const resolvedConversationId = await conversationPromise;
       if (resolvedConversationId && assistantContent) {

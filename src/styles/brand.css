@@ -89,12 +89,64 @@
   --settings-muted: #a3a3a3;
 }
 .elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }
+.plus-attachment-backdrop { position: fixed; inset: 0; z-index: 55; background: hsl(var(--foreground) / .45); }
+html body .plus-attachment-panel[data-plus-menu] {
+  position: fixed; z-index: 60; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  width: min(560px, calc(100% - 28px)); padding: 22px; border-radius: 30px; border: 0;
+  background: hsl(var(--background)) !important; backdrop-filter: none !important; box-shadow: none !important;
+}
+html body .plus-attachment-panel::before, html body .plus-attachment-panel::after { display: none !important; }
+.plus-attachment-choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+html body .plus-attachment-panel .plus-attachment-choice {
+  display: flex; flex-direction: column; gap: 16px; height: auto; aspect-ratio: 1.12; min-width: 0;
+  border: 0 !important; border-radius: 24px; background: hsl(var(--muted) / .5) !important; color: hsl(var(--foreground)) !important;
+  font-size: 16px; font-weight: 400; box-shadow: none !important;
+}
+html body .plus-attachment-panel .plus-attachment-choice svg { width: 28px; height: 28px; color: hsl(var(--foreground)) !important; }
+html body .plus-attachment-panel .plus-attachment-choice:hover { background: hsl(var(--muted)) !important; }
+@media (min-width: 768px) { html body .plus-attachment-panel[data-plus-menu] { bottom: 125px; } }
 .welcome-root { --w-bg: #111111; --w-fg: #ffffff; }
 .welcome-logo { color: var(--w-fg); }
 .welcome-root .elgiza-brand-mark { filter: none !important; }
 .welcome-root .welcome-btn { background: var(--w-fg); color: var(--w-bg); }
 html.light, html.light body, html.light #root { background-color: hsl(var(--background)) !important; }
 .chat-ambient-glow { display: none; }
+/* Restore the original chat accents locally, without recoloring other pages. */
+html body [data-shell="megsy"] {
+  --megsy-blue: #5b8def;
+  --megsy-gold: #e0b25a;
+  --megsy-gold-strong: #f5d489;
+  --chat-grad-a: 340 82% 56%;
+  --chat-grad-b: 22 95% 55%;
+  --chat-grad-c: 217 91% 60%;
+  --chat-accent-middle: 15 88% 55%;
+  --chat-accent-foreground: 0 0% 100%;
+  --chat-accent-gradient: linear-gradient(135deg, hsl(var(--chat-grad-a)), hsl(var(--chat-accent-middle)) 55%, hsl(var(--chat-grad-b)));
+}
+html body [data-shell="megsy"] .user-bubble.user-bubble {
+  background: var(--chat-accent-gradient) !important;
+  color: hsl(var(--chat-accent-foreground)) !important;
+}
+html body [data-shell="megsy"] .user-bubble.user-bubble :where(a, code, strong) { color: hsl(var(--chat-accent-foreground)) !important; }
+html body [data-shell="megsy"] .chat-composer-frame.chat-composer-frame {
+  border-color: transparent !important;
+  background: linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box, linear-gradient(120deg, hsl(var(--chat-grad-a) / .55), hsl(var(--chat-grad-b) / .45), hsl(var(--chat-grad-c) / .5)) border-box !important;
+}
+html body [data-shell="megsy"] .chat-composer-frame [data-testid="mobile-composer-send"] {
+  background: var(--chat-accent-gradient) !important;
+  color: hsl(var(--chat-accent-foreground)) !important;
+}
+/* Legacy HSL tokens are channel tuples, not standalone CSS colors. */
+html body .thinking-shimmer {
+  color: hsl(var(--muted-foreground));
+  background-image: linear-gradient(90deg, hsl(var(--muted-foreground)), hsl(var(--muted-foreground)) 40%, hsl(var(--foreground)) 50%, hsl(var(--muted-foreground)) 60%, hsl(var(--muted-foreground)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .thinking-shimmer, html body .ai-shimmer { animation: none; }
+}
 html .user-bubble.user-bubble,
 html.dark [data-shell="megsy"] .user-bubble.user-bubble {
   background: var(--brand-orange) !important;

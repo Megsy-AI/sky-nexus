@@ -29,6 +29,34 @@ describe("authenticated chat deployment fallback", () => {
     expect((await handler(request("full"))).status).toBe(200);
     expect(fetchMock.mock.calls[0][0]).toContain("/functions/v1/chat-alibaba");
   });
+  it("returns 499 without throwing when Stop cancels a pending hosted request", async () => {
+    const controller = new AbortController();
+    const req = new Request(request(), { signal: controller.signal });
+    stream.mockResolvedValue(new Response(null, { status: 503 }));
+    const fetchMock = vi.fn().mockImplementation(async () => {
+      controller.abort();
+      throw new DOMException("This operation was aborted", "AbortError");
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    const response = await handler(req);
+    expect(response.status).toBe(499);
+    expect(await response.text()).toBe("");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+  it("does not start a provider request when already canceled", async () => {
+    const controller = new AbortController();
+    const req = new Request(request(), { signal: controller.signal });
+    controller.abort();
+    expect((await handler(req)).status).toBe(499);
+    expect(guard).not.toHaveBeenCalled();
+    expect(stream).not.toHaveBeenCalled();
+  });
+  it("handles local provider cancellation without entering hosted fallback", async () => {
+    stream.mockRejectedValue(new DOMException("Aborted", "AbortError"));
+    const fetchMock = vi.fn(); vi.stubGlobal("fetch", fetchMock);
+    expect((await handler(request())).status).toBe(499);
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
   it("rejects unauthenticated callers before either provider path", async () => {
     guard.mockResolvedValue({ ok: false, status: 401 });
     const fetchMock = vi.fn(); vi.stubGlobal("fetch", fetchMock);

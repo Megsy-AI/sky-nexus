@@ -6,8 +6,24 @@ import { apiHeaders } from "../api/authenticateRequest";
 import { edgeAnonKey, edgeUrl } from "../edgeRuntime";
 
 export const config = { runtime: "nodejs", maxDuration: 300 };
+const isAbort = (error: unknown) =>
+  typeof error === "object" && error !== null && "name" in error && error.name === "AbortError";
 
 export default async function handler(req: Request): Promise<Response> {
+  // Stop/navigation aborts are expected request outcomes, not route crashes.
+  // Cover auth, body reads, local chat and research as well as hosted fetch.
+  try {
+    if (req.signal.aborted) return new Response(null, { status: 499, headers: apiHeaders(req) });
+    return await handleRequest(req);
+  } catch (error) {
+    if (req.signal.aborted || isAbort(error)) {
+      return new Response(null, { status: 499, headers: apiHeaders(req) });
+    }
+    throw error;
+  }
+}
+
+async function handleRequest(req: Request): Promise<Response> {
   const headers = apiHeaders(req);
   const url = new URL(req.url);
   const isDeepResearch =
@@ -67,7 +83,9 @@ export default async function handler(req: Request): Promise<Response> {
     }
     return new Response(upstream.body, { status: upstream.status, headers: responseHeaders });
   } catch (error) {
-    if (req.signal.aborted) throw error;
+    if (req.signal.aborted || isAbort(error)) {
+      return new Response(null, { status: 499, headers });
+    }
     console.error("Hosted chat relay failed", { function: fn });
     return new Response(JSON.stringify({ error: "Chat service is temporarily unavailable. Please try again." }), { status: 502, headers });
   }

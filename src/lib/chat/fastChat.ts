@@ -1,4 +1,6 @@
 import { edgeAnonKey, edgeUrl } from "@/lib/edgeRuntime";
+import { isTrivialTurn } from "./trivialTurn";
+import { GENUI_PROMPT } from "@/components/chat/genui/prompt";
 /**
  * Fast lane for simple chat turns.
  *
@@ -104,6 +106,7 @@ export async function tryFastChat({
   const proxyBody = JSON.stringify({
     messages,
     lane: "fast",
+    customSystem: GENUI_PROMPT,
     ...(force ? { force: true } : {}),
     thinking: thinking === true,
     ...(requestedMaxTokens ? { maxTokens: requestedMaxTokens } : {}),
@@ -147,6 +150,7 @@ export async function tryFastChat({
         },
         body: JSON.stringify({
           messages,
+          customSystem: GENUI_PROMPT,
           thinking: thinking === true,
           ...(routingContext ? { routingContext } : {}),
           ...(force ? { force: true } : {}),
@@ -209,7 +213,7 @@ export async function tryFastChat({
   // ("We need to generate an image using the tool. [[MEGSY_ESCALATE...]]").
   // Hold back the opening of the answer until it clearly is a real answer, so
   // such a hand-off never shows up in the chat.
-  const HOLD_CHARS = 320;
+  const HOLD_CHARS = isTrivialTurn(messages) ? 0 : 320;
   const anywhereSentinel = /\[\[\s*MEGSY_ESCALATE/i;
   let tail = "";
   const handleContent = (content: string) => {
@@ -219,7 +223,10 @@ export async function tryFastChat({
       if (routeSentinelPattern.test(candidate) || anywhereSentinel.test(candidate))
         throw new Error("__ESCALATE__");
       if (isPossibleRouteSentinel(candidate)) return;
-      if (candidate.length < HOLD_CHARS) return;
+      // Even a greeting can be misrouted upstream: keep tool-handoff
+      // preambles buffered while letting genuine short replies stream.
+      const handoffPreamble = /^(we need to|i need to|i will|let me|the user|خليني|سأقوم|سوف)/i.test(candidate);
+      if (candidate.length < (handoffPreamble ? 320 : HOLD_CHARS)) return;
       routeResolved = true;
       const buffered = routePrefix;
       routePrefix = "";

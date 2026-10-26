@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { sanitizeLeakedToolText, stripRouteSentinel } from "./chatUtils";
+import { sanitizeLeakedToolText, stripRouteSentinel, makeLeakedToolStreamSanitizer } from "./chatUtils";
 
 describe("stripRouteSentinel", () => {
   it("removes the bare sentinel", () => {
@@ -21,6 +21,12 @@ describe("stripRouteSentinel", () => {
 });
 
 describe("sanitizeLeakedToolText", () => {
+  it("preserves the closing OpenUI fence at end of stream so actions enable", () => {
+    const sanitize = makeLeakedToolStreamSanitizer();
+    const chunks = ["```op", 'enui\nroot = Text("Hello")\n', "```"];
+    const result = chunks.map(chunk => sanitize(chunk)).join("") + sanitize("", true);
+    expect(result).toBe(chunks.join(""));
+  });
   it("never exposes the route sentinel in rendered content", () => {
     const leaked =
       "We need to generate an image using the tool.\n[[MEGSY_ESCALATE_TO_FULL_CHAT:media]]";

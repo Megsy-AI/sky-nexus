@@ -24,6 +24,19 @@ describe("full chat completion", () => {
     expect(onDone).not.toHaveBeenCalled();
   });
 
+  it("recovers an empty completed stream with one real fast-lane answer", async () => {
+    const fetchMock = vi.fn()
+      .mockResolvedValueOnce(response("data:[DONE]\n\n"))
+      .mockResolvedValueOnce(response('data:{"choices":[{"delta":{"content":"Recovered answer"}}]}\n\ndata:[DONE]\n\n'));
+    vi.stubGlobal("fetch", fetchMock);
+    const onDelta = vi.fn(); const onDone = vi.fn(); const onError = vi.fn();
+    await streamChat({ messages, onDelta, onDone, onError });
+    expect(onDelta).toHaveBeenCalledWith("Recovered answer");
+    expect(onDone).toHaveBeenCalledOnce();
+    expect(onError).not.toHaveBeenCalled();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
   it("reads compact and unterminated SSE frames with the signed-in session", async () => {
     const fetchMock = vi.fn().mockResolvedValue(response('data:{"choices":[{"delta":{"content":"Real answer"}}]}\n\ndata:[DONE]'));
     vi.stubGlobal("fetch", fetchMock);

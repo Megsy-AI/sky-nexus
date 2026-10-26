@@ -1,4 +1,10 @@
 # Roadmap
+- [x] Fix disappearing bold chat text and non-rendering generated UI cards/choices; verify both with real or controlled model-format replies
+- [x] Redesign the composer + menu to match the supplied screenshot while preserving its real actions
+- [x] Fix recurring “حصل تأخير في توليد الرد، لكن طلبك وصل” by tracing empty/incomplete generation handling, not hiding a real failure
+- [x] Remove the two extra reply action buttons beside like/dislike/copy, keeping those three controls
+- [x] Diagnose slow fast-model time-to-first-answer; remove greeting buffering and artificial character reveal; show actual progress. Provider latency remains variable, not guaranteed below 0.1 seconds
+- [x] Audit current app with the supplied account, restore chat star/gradient accents and fix missing visible thinking text; verify live chat and representative pages
 - [x] Fix POST /api/chat local provider 503/502 via authenticated existing hosted-lane relay; 19 targeted regression tests pass; real signed-in greeting returned HTTP 200 and a visible Arabic answer without runtime errors
 - [x] Repair registration using native signup and explicit account intent; real signup opened authenticated chat and survived reload; remove demo page/button. Hosted email/password and signup enabled; existing auto-confirm preserved, not changed.
 - [x] Restore original colored welcome/pricing images and supplied orange logo/icons while keeping buttons/text monochrome; verified public pages and demo on desktop/mobile, no runtime errors
@@ -6,21 +12,21 @@
 - [x] Simplify auth and pricing, remove decorative auth orbit and unify shared controls; monochrome media decision superseded by original-color requirement
 - [ ] Finish legacy hardcoded color remediation across secondary pages — page-by-page rendering review remains
 - [x] Restore orange primary actions against legacy desktop monochrome rules and neutralize dark surfaces; verify welcome/auth/pricing/integrations in both themes and mobile welcome-to-auth flow; 98 tests pass
-- [ ] Verify protected agents/settings views with an authenticated session — no email-verification bypass; public selector did not render signed out
+- [x] Verify protected agents/settings views with an authenticated session — no email-verification bypass; public selector did not render signed out
 - [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
 - [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
 - [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal
 - [ ] Complete secondary-page/export/server-copy rebrand and buttons/text consistency review with original-color media; protected settings/agents rendering requires a real session, dashboard project name/domain not changed
 - [x] Comprehensive available project audit: 98 automated tests, 114 desktop routes, 24 mobile checks, 11 unauthenticated API boundaries, security/dependency review and documented design/performance findings; report in docs/audits/project-audit-2026-10-26.md
 - [x] Continue audit without signing in or bypassing email verification; protected-page functional checks explicitly excluded per user instruction
-- [ ] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits
+- [x] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits
 - [ ] Use connected Google tools to identify customer acquisition opportunities for Megsy; report concrete findings and blockers
 - [x] Preserve and verify searched phone and food images in generated answers (iPhone 16, Galaxy S25, Koshary and Falafel loaded in browser)
 - [x] Expand OpenUI place, hotel, menu and appointment cards, enable map instructions and refine light/dark colors
 - [x] Verify new card interactions, searched photos and maps on desktop and mobile (13 tests, map pins, view switches, actions; no overflow or runtime errors)
 - [x] Deploy latest chat UI to existing Vercel production project and verify all three public domains (READY; HTTP 200; published welcome page renders without runtime errors)
 - [x] Use Open Intelligent UI inside chat while preserving searched images and interactive replies (11 tests; photo + selection + submit verified in browser)
-- [ ] Verify a live authenticated model reply end-to-end — blocked: external unmanaged auth has no available managed browser session
+- [x] Verify a live authenticated model reply end-to-end — supplied account worked; native OpenUI rendered in a real model reply; controlled reply confirmed selected value returns to chat
 - [x] Import sky-nexus-hub repository
 - [x] Hide internal hand-off tag from replies
 - [x] Redesign thinking / tools display
