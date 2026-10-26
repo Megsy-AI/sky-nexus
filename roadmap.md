@@ -1,6 +1,8 @@
 # Roadmap
-- [ ] Audit unused/legacy pages, provider paths, dependencies and duplicate code; propose safe phased cleanup without deleting active functionality
-- [ ] Prepare rebranding from Megsy to elgiza using the supplied logo; preserve account data, existing service contracts and working links
+- [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
+- [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
+- [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal
+- [ ] Complete secondary-page/export/server-copy rebrand and monochrome review; dashboard project name/domain not changed
 - [x] Comprehensive available project audit: 98 automated tests, 114 desktop routes, 24 mobile checks, 11 unauthenticated API boundaries, security/dependency review and documented design/performance findings; report in docs/audits/project-audit-2026-10-26.md
 - [x] Continue audit without signing in or bypassing email verification; protected-page functional checks explicitly excluded per user instruction
 - [ ] Diagnose and repair chat delay / empty-response failure; verify with regression tests and real chat if authentication permits

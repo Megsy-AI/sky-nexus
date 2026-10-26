@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { LOCALES, type LocaleCode, getLocale } from "@/lib/landing/i18n/locales";
 import { translateExactText, getUserLang, type AuthLang } from "@/lib/authI18n";
+import { BRAND } from "@/lib/brand";
 
 interface SEOHeadProps {
   title: string;
@@ -17,8 +18,6 @@ interface SEOHeadProps {
 // The apex domain permanently redirects to www. Canonicals and alternates must
 // use the final 200 URL so Google sees a canonical/redirect match.
 const SITE_URL = "https://www.megsyai.com";
-const DEFAULT_IMAGE =
-  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/fae3cd77-3f99-4a10-8225-ba5e64510390/id-preview-b1f21eef--70a3240c-12ec-46ff-99ea-54f772181a95.lovable.app-1772787005803.png";
 
 const SEOHead = ({
   title,
@@ -32,13 +31,13 @@ const SEOHead = ({
 }: SEOHeadProps) => {
   const meta = locale ? getLocale(locale) : undefined;
 
-  const brandName = "Megsy AI";
+  const brandName = BRAND.name;
   const twitterHandle = "@MegsyAI";
 
   const isHomePath = path === "/" || (meta && path === meta.path);
   const fullTitle = isHomePath ? title : `${title} | ${brandName}`;
   const canonical = `${SITE_URL}${path || "/"}`;
-  const ogImage = image || DEFAULT_IMAGE;
+  const ogImage = image?.startsWith("https://") ? image : undefined;
   // If SEOHead has an explicit locale (localized landing routes), use it.
   // Otherwise defer to the visitor's chosen language (English or Egyptian
   // Arabic) so <html lang/dir> stays in sync with the in-app dictionary.
@@ -48,7 +47,8 @@ const SEOHead = ({
   const ogLocale = meta?.ogLocale ?? (savedLang === "ar-eg" ? "ar_EG" : "en_US");
   const effectiveLang = (meta?.code ?? savedLang) as AuthLang | undefined;
 
-  const localizedTitle = effectiveLang ? translateExactText(title, effectiveLang) : title;
+  const displayBrand = (text: string) => text.replace(/\bMegsy(?: AI)?\b/gi, BRAND.name);
+  const localizedTitle = displayBrand(effectiveLang ? translateExactText(title, effectiveLang) : title);
   const localizedDescription = effectiveLang
     ? translateExactText(description, effectiveLang)
     : description;
@@ -59,15 +59,15 @@ const SEOHead = ({
       <html lang={htmlLang} dir={htmlDir} />
 
       <title>{localizedFullTitle}</title>
-      <meta name="description" content={localizedDescription} />
+      <meta name="description" content={displayBrand(localizedDescription)} />
       <link rel="canonical" href={canonical} />
       {noindex && <meta name="robots" content="noindex,nofollow" />}
 
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
       <meta property="og:title" content={localizedFullTitle} />
-      <meta property="og:description" content={localizedDescription} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:description" content={displayBrand(localizedDescription)} />
+      {ogImage && <meta property="og:image" content={ogImage} />}
       <meta property="og:site_name" content={brandName} />
       <meta property="og:locale" content={ogLocale} />
       {meta?.code !== "en" && <meta property="og:locale:alternate" content="en_US" />}
@@ -75,8 +75,8 @@ const SEOHead = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={twitterHandle} />
       <meta name="twitter:title" content={localizedFullTitle} />
-      <meta name="twitter:description" content={localizedDescription} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:description" content={displayBrand(localizedDescription)} />
+      {ogImage && <meta name="twitter:image" content={ogImage} />}
 
       {emitLandingAlternates && (
         <>

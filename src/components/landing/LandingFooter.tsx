@@ -89,7 +89,7 @@ const LandingFooter = () => {
             <div className="md:col-span-5">
               <div className="flex items-center gap-3 mb-4">
                 <BrandLogo
-                  alt="Megsy logo"
+                  alt="elgiza logo"
                   width={32}
                   height={32}
                   className="h-8 w-8"
@@ -97,10 +97,10 @@ const LandingFooter = () => {
                   decoding="async"
                 />
 
-                <BrandWord className="text-xl font-medium tracking-wide">MEGSY</BrandWord>
+                <BrandWord className="text-xl font-medium tracking-wide">elgiza</BrandWord>
               </div>
               <p className="text-sm leading-relaxed max-w-sm">
-                {tx("Megsy is the all-in-one AI workspace — chat, images, video, slides, docs and code, in one calm canvas.")}
+                {tx("elgiza is the all-in-one AI workspace — chat, images, video, slides, docs and code, in one calm canvas.")}
               </p>
             </div>
 

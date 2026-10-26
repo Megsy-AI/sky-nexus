@@ -1,7 +1,7 @@
 /** @doc useBrandLogo — returns the Megsy brand icon URL. */
-import megsyProjectLogo from "@/assets/megsy-project-logo.png";
+import { BRAND } from "@/lib/brand";
 
-const megsyIconUrl = megsyProjectLogo;
+const megsyIconUrl = BRAND.logoUrl;
 
 export function useBrandLogo(): string {
   return megsyIconUrl;
