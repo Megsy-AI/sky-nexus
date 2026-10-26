@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Fix POST /api/chat returning 503 when the local provider key pool is unavailable; add regression coverage and verify an authenticated chat turn
 - [x] Repair registration using native signup and explicit account intent; real signup opened authenticated chat and survived reload; remove demo page/button. Hosted email/password and signup enabled; existing auto-confirm preserved, not changed.
 - [x] Restore original colored welcome/pricing images and supplied orange logo/icons while keeping buttons/text monochrome; verified public pages and demo on desktop/mobile, no runtime errors
 - [x] Account-free demo retired at user request; its page, button, local replies and tests removed
