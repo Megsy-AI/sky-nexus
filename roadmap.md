@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Fix POST /api/chat local provider 503/502 via authenticated existing hosted-lane relay; 19 targeted regression tests pass; real signed-in greeting returned HTTP 200 and a visible Arabic answer without runtime errors
 - [x] Repair registration using native signup and explicit account intent; real signup opened authenticated chat and survived reload; remove demo page/button. Hosted email/password and signup enabled; existing auto-confirm preserved, not changed.
 - [x] Restore original colored welcome/pricing images and supplied orange logo/icons while keeping buttons/text monochrome; verified public pages and demo on desktop/mobile, no runtime errors
 - [x] Account-free demo retired at user request; its page, button, local replies and tests removed
