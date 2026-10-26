@@ -1,11 +1,12 @@
 /** @doc BrandLogo — Megsy icon with a silver shimmer sweep that settles to white. */
 import { useBrandLogo } from "@/hooks/useBrandLogo";
 import { cn } from "@/lib/utils";
+import { BRAND } from "@/lib/brand";
 import type { HTMLAttributes, ImgHTMLAttributes } from "react";
 
 export interface BrandLogoProps extends ImgHTMLAttributes<HTMLImageElement> {}
 
-export function BrandLogo({ className, style, alt = "Megsy", ...props }: BrandLogoProps) {
+export function BrandLogo({ className, style, alt = BRAND.logoAlt, ...props }: BrandLogoProps) {
   const src = useBrandLogo();
   return (
     <span className="brand-logo-wrap relative inline-flex items-center justify-center">
@@ -16,17 +17,11 @@ export function BrandLogo({ className, style, alt = "Megsy", ...props }: BrandLo
         style={style}
         {...props}
       />
-      <img
-        src={src}
-        alt=""
-        aria-hidden="true"
-        className={cn("brand-logo-shine object-contain", className)}
-      />
     </span>
   );
 }
 
-export function BrandWord({ className, children = "Megsy", ...props }: HTMLAttributes<HTMLSpanElement>) {
+export function BrandWord({ className, children = BRAND.name, ...props }: HTMLAttributes<HTMLSpanElement>) {
   return (
     <span className={cn("brand-word", className)} {...props}>
       {children}
