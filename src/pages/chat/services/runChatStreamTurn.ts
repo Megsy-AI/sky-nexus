@@ -1354,27 +1354,7 @@ export async function runChatStreamTurn(opts: RunChatStreamTurnOptions): Promise
           ? "لم تُرجع خدمة المحادثة إجابة. يمكنك إعادة المحاولة."
           : "The chat service returned no answer. You can retry.");
         return;
-        setMessages((prev) => {
-          const assistantIndex = prev.findIndex((m) => m.clientId === `assistant-${localTurnId}`);
-          const targetIndex = assistantIndex >= 0 ? assistantIndex : prev.length - 1;
-          const last = prev[targetIndex];
-          if (last?.role !== "assistant")
-            return [
-              ...prev,
-              {
-                role: "assistant",
-                content: assistantContent,
-                clientId: `assistant-${localTurnId}`,
-              },
-            ];
-          const next = prev.slice();
-          next[targetIndex] = {
-            ...last,
-            content: assistantContent,
-            ...(isDeepResearch ? { mode: "deep-research" as const } : {}),
-          };
-          return next;
-        });
+
       }
       const resolvedConversationId = await conversationPromise;
       if (resolvedConversationId && assistantContent) {
