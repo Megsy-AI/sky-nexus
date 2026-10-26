@@ -1,0 +1,2982 @@
+{
+  "excluded": [
+    "*",
+    "/agents/chat/:sessionId",
+    "/ai-chat/*",
+    "/ai/*",
+    "/auth/apple-callback",
+    "/auth/callback/:provider",
+    "/auth/mfa",
+    "/billing/success",
+    "/cinema/*",
+    "/compare/*",
+    "/document/:artifactId",
+    "/eg/*",
+    "/file-preview/:id",
+    "/for/*",
+    "/images/*",
+    "/integrations/:app",
+    "/invite/:token",
+    "/l/*",
+    "/legal/*",
+    "/mail/*",
+    "/mcp-callback",
+    "/models/*",
+    "/oauth/authorize",
+    "/policies/*",
+    "/preview/:type",
+    "/promo/:code",
+    "/r/:code",
+    "/ref/:code",
+    "/research/preview/:id",
+    "/research/share/:token",
+    "/reset-password",
+    "/s/:slug",
+    "/settings/change-email",
+    "/settings/change-password",
+    "/settings/data/:category",
+    "/settings/delete-account",
+    "/settings/two-factor",
+    "/settings/workspaces/*",
+    "/share/:shareId",
+    "/slides/file-preview/:id",
+    "/slides/preview/:id",
+    "/solutions/*",
+    "/suc",
+    "/tasks/*",
+    "/template/:id",
+    "/templates/*",
+    "/tools/*",
+    "/videos/*",
+    "/vs/:slug",
+    "/workspaces/*"
+  ],
+  "results": [
+    {
+      "path": "/",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.51,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 160
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/about",
+      "final": "/about",
+      "status": 200,
+      "title": "About Megsy AI — Megsy AI | Megsy AI",
+      "seconds": 10.1,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1127,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8556
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/admin",
+      "final": "/auth?redirect=%2Fadmin",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 9.01,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 156
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agent",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.39,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8028
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agents",
+      "final": "/auth?redirect=%2Fagents",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 6.03,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 128
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agents/chat",
+      "final": "/auth?redirect=%2Fagents%2Fchat",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 12.31,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3220
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agents/conversations",
+      "final": "/auth?redirect=%2Fagents%2Fconversations",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 8.13,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2240
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agents/directory",
+      "final": "/auth?redirect=%2Fagents",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 9.37,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 140
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/agents/new",
+      "final": "/auth?redirect=%2Fagents%2Fnew",
+      "status": 200,
+      "title": "Sign in to Megsy AI — Your AI Agent Workspace | Megsy AI",
+      "seconds": 9.42,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3420
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/ai-chat",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 6.21,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 196
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 5168
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/anything",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.36,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3448
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8264
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/apps",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 8.11,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2200
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/ar-eg",
+      "final": "/ar-eg",
+      "status": 200,
+      "title": "ميغسي — مساحة شغلك بالذكاء الاصطناعي",
+      "seconds": 9.01,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2507,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2140
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/auth",
+      "final": "/auth",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.72,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2796
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/billing",
+      "final": "/auth?redirect=%2Fusage",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.15,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2172
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/billing/referrals",
+      "final": "/auth?redirect=%2Freferrals",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 7.09,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1020
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/build",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.5,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2396
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8308
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/chat",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.2,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2836
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/checkout",
+      "final": "/auth?redirect=/checkout",
+      "status": 200,
+      "title": "Auth — Megsy AI",
+      "seconds": 8.24,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 81,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2072
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6968
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/cinema",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 12.67,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2168
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 11300
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/code",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 8.41,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2256
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 7208
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/compare",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 9.24,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 204
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/comparison",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 10.11,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 176
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8820
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/compliance",
+      "final": "/privacy",
+      "status": 200,
+      "title": "Privacy Policy — Megsy AI | Megsy AI",
+      "seconds": 6.08,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 156
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 4896
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/contact",
+      "final": "/contact",
+      "status": 200,
+      "title": "Contact Megsy AI — Megsy AI | Megsy AI",
+      "seconds": 10.27,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1012,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3152
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 9196
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/cookies",
+      "final": "/privacy",
+      "status": 200,
+      "title": "Privacy Policy — Megsy AI | Megsy AI",
+      "seconds": 11.12,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3080
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 9760
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/earn",
+      "final": "/auth?redirect=%2Freferrals",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 14.4,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3732
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/eg",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.42,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2432
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8144
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/enterprise",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 11.75,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 184
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 11008
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/features",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 11.63,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 244
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 10696
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/features-guide",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 6.95,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 168
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/for",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 14.56,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 4124
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 13556
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/gallery",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 8.8,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2372
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8100
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/index",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 8.62,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 200
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/integration",
+      "final": "/integrations",
+      "status": 200,
+      "title": "Apps — Megsy",
+      "seconds": 11.05,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 10311,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 364
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 9424
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/integrations",
+      "final": "/integrations",
+      "status": 200,
+      "title": "Apps — Megsy",
+      "seconds": 7.94,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 10311,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 244
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6364
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/k",
+      "final": "/k",
+      "status": 200,
+      "title": "k",
+      "seconds": 10.31,
+      "errors": [],
+      "failedRequests": [
+        {
+          "path": "https://qdnqxjzjecaieuavagvq.supabase.co/rest/v1/rpc/provider_key_counts",
+          "status": 401
+        },
+        {
+          "path": "https://qdnqxjzjecaieuavagvq.supabase.co/rest/v1/rpc/provider_key_counts",
+          "status": 401
+        }
+      ],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 148,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2888
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8944
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/l",
+      "final": "/l",
+      "status": 200,
+      "title": "L — Megsy AI",
+      "seconds": 7.72,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 706,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 692
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6884
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/landing",
+      "final": "/landing",
+      "status": 200,
+      "title": "ميغسي — مساحة شغلك بالذكاء الاصطناعي | Megsy AI",
+      "seconds": 10.51,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2508,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3116
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/learn",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.58,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3148
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8468
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/library",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 8.19,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2048
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 7392
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/login",
+      "final": "/login",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.68,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2568
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/m",
+      "final": "/m",
+      "status": 200,
+      "title": "M — Megsy AI",
+      "seconds": 8.99,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 55,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2776
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 7992
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/mail",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.74,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2632
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8420
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/media",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 10.51,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3016
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/megay",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 10.95,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2792
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/megsy",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 14.89,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3380
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 13920
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/megsy-model",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 10.03,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2960
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8876
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/models",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 9.67,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 208
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 9048
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/notifications",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.64,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 168
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/pricing",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 6.38,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/privacy",
+      "final": "/privacy",
+      "status": 200,
+      "title": "Privacy Policy — Megsy AI | Megsy AI",
+      "seconds": 11.04,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 204
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 9208
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/referrals",
+      "final": "/auth?redirect=%2Freferrals",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.53,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/referrals/resources",
+      "final": "/auth?redirect=%2Freferrals%2Fresources",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.57,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 176
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/refund",
+      "final": "/refund",
+      "status": 200,
+      "title": "Refund Policy — Megsy AI | Megsy AI",
+      "seconds": 11.25,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1975,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 152
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/register",
+      "final": "/register",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.68,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 200
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/research/preview/new",
+      "final": "/auth?redirect=%2Fresearch%2Fpreview%2Fnew",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 13.66,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 216
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/restore",
+      "final": "/restore",
+      "status": 200,
+      "title": "استرجاع المشتريات | Megsy AI",
+      "seconds": 13.74,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 751,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 12460
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/se",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 10.55,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 244
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/security",
+      "final": "/security",
+      "status": 200,
+      "title": "الأمان | Megsy AI",
+      "seconds": 12.39,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2026,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 240
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 11308
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/services",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 6.84,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 180
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 12.96,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2556
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/ai-personalization",
+      "final": "/auth?redirect=%2Fsettings%2Fai-personalization",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.53,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2472
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/billing",
+      "final": "/auth?redirect=%2Fusage",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 7.0,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 148
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/capabilities",
+      "final": "/auth?redirect=%2Fsettings%2Fcapabilities",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.94,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 3480
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/cloud-browser",
+      "final": "/auth?redirect=%2Fsettings%2Fcloud-browser",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.84,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2336
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/customization",
+      "final": "/auth?redirect=%2Fsettings%2Fcustomization",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.95,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2812
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/desktop-bridge",
+      "final": "/auth?redirect=%2Fsettings%2Fdesktop-bridge",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.42,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2492
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/data",
+      "final": "/auth?redirect=%2Fsettings%2Fdata",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 12.86,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2340
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/help",
+      "final": "/auth?redirect=%2Fsettings%2Fsupport%2Fhelp",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.58,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 180
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/general",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.77,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 180
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/knowledge",
+      "final": "/auth?redirect=%2Fsettings%2Fmemory",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 12.51,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 220
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/integrations",
+      "final": "/integrations",
+      "status": 200,
+      "title": "Apps — Megsy",
+      "seconds": 13.05,
+      "errors": [],
+      "failedRequests": [
+        {
+          "path": "https://t0.gstatic.com/faviconV2",
+          "status": 404
+        },
+        {
+          "path": "https://t2.gstatic.com/faviconV2",
+          "status": 404
+        },
+        {
+          "path": "https://t0.gstatic.com/faviconV2",
+          "status": 404
+        },
+        {
+          "path": "https://t3.gstatic.com/faviconV2",
+          "status": 404
+        }
+      ],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 10311,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 240
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 12716
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/language",
+      "final": "/auth?redirect=%2Fsettings%2Flanguage",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.37,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 268
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/mail",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 11.45,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 276
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 10204
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/mcp",
+      "final": "/auth?redirect=%2Fsettings%2Fmcp",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.79,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/memory",
+      "final": "/auth?redirect=%2Fsettings%2Fmemory",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.41,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 296
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/notifications",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.41,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 280
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/passwords",
+      "final": "/auth?redirect=%2Fsettings%2Fpasswords",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.86,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 564
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/privacy",
+      "final": "/auth?redirect=%2Fsettings%2Fprivacy",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.77,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 196
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/profile",
+      "final": "/auth?redirect=%2Fsettings%2Fprofile%2Fedit",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.25,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 212
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/profile/edit",
+      "final": "/auth?redirect=%2Fsettings%2Fprofile%2Fedit",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.3,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 232
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/referrals",
+      "final": "/auth?redirect=%2Freferrals",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.77,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 248
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/security",
+      "final": "/auth?redirect=%2Fsettings%2Fsecurity",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.45,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 204
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/referrals/resources",
+      "final": "/auth?redirect=%2Freferrals%2Fresources",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 11.14,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 156
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/skills",
+      "final": "/auth?redirect=%2Fsettings%2Fskills",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.17,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 220
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/skills/library",
+      "final": "/auth?redirect=%2Fsettings%2Fskills%2Flibrary",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.28,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 180
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/support",
+      "final": "/auth?redirect=%2Fsettings%2Fsupport",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.27,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 212
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/skills/new",
+      "final": "/auth?redirect=%2Fsettings%2Fskills%2Fnew",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.63,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/support/contact",
+      "final": "/auth?redirect=%2Fsettings%2Fsupport%2Fcontact",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.18,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 276
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/support/help",
+      "final": "/auth?redirect=%2Fsettings%2Fsupport%2Fhelp",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.12,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/system-status",
+      "final": "/auth?redirect=%2Fsettings%2Fsystem-status",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.89,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 224
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/settings/workspaces",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.78,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 512
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/showcase",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 7.04,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 156
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 5856
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/signin",
+      "final": "/signin",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.22,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 204
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/signup",
+      "final": "/signup",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.02,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2536
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/skills",
+      "final": "/auth?redirect=%2Fskills",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.18,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2984
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/solutions",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 9.12,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2696
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/status",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 9.06,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1896
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 7552
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/support",
+      "final": "/auth?redirect=%2Fsettings%2Fsupport%2Fhelp",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 13.13,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2716
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/tasks",
+      "final": "/auth?redirect=%2Fagents",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 9.14,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1984
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/team",
+      "final": "/auth?redirect=%2Fteam",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.25,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 200
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/terms",
+      "final": "/terms",
+      "status": 200,
+      "title": "Terms of Service — Megsy AI | Megsy AI",
+      "seconds": 8.22,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2514,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2092
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 7304
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/templates",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 15.26,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1976,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 4116
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 14336
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/test/desktop-bridge",
+      "final": "/auth?redirect=%2Ftest%2Fdesktop-bridge",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.56,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 192
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/test",
+      "final": "/test",
+      "status": 200,
+      "title": "Test — Megsy AI",
+      "seconds": 13.13,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 53,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 8984
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/testr",
+      "final": "/testr",
+      "status": 200,
+      "title": "Testr — Megsy AI",
+      "seconds": 6.45,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 167,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 168
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 5356
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/tools",
+      "final": "/pricing",
+      "status": 200,
+      "title": "Pricing — Megsy AI Plans & Credits | Megsy AI",
+      "seconds": 10.43,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 1766,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2140
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/trust",
+      "final": "/security",
+      "status": 200,
+      "title": "الأمان | Megsy AI",
+      "seconds": 9.88,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 2026,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 2736
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/usage",
+      "final": "/auth?redirect=%2Fusage",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.33,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 920
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/welcome",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 7.84,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1804
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6804
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/workspace",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 8.12,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1128
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/workspaces",
+      "final": "/auth?redirect=%2Fsettings",
+      "status": 200,
+      "title": "سجّل دخولك في Megsy AI | Megsy AI",
+      "seconds": 10.29,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 155,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 184
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    },
+    {
+      "path": "/x",
+      "final": "/welcome",
+      "status": 200,
+      "title": "Welcome — Megsy AI",
+      "seconds": 8.15,
+      "errors": [],
+      "failedRequests": [],
+      "metrics": {
+        "width": 1280,
+        "scroll": 1280,
+        "bodyLength": 85,
+        "brokenImages": [],
+        "paint": [
+          {
+            "name": "first-paint",
+            "ms": 1892
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6844
+          }
+        ],
+        "resources": 250
+      },
+      "blank": false,
+      "errorScreen": false
+    }
+  ]
+}

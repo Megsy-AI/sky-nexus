@@ -1,0 +1,841 @@
+{
+  "mobile": [
+    {
+      "path": "/auth",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/auth",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 844,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 160
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 5696
+          }
+        ]
+      }
+    },
+    {
+      "path": "/welcome",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/welcome",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 844,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 152
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1556
+          }
+        ]
+      }
+    },
+    {
+      "path": "/pricing",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/pricing",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 844,
+        "bodyLength": 276,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 148
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1300
+          }
+        ]
+      }
+    },
+    {
+      "path": "/integrations",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/integrations",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 37404,
+        "bodyLength": 10309,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 184
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1300
+          }
+        ]
+      }
+    },
+    {
+      "path": "/terms",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/terms",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 2790,
+        "bodyLength": 2514,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1260
+          }
+        ]
+      }
+    },
+    {
+      "path": "/privacy",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/privacy",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 2733,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 140
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1284
+          }
+        ]
+      }
+    },
+    {
+      "path": "/checkout",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/auth?redirect=/checkout",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 844,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 136
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1296
+          }
+        ]
+      }
+    },
+    {
+      "path": "/unknown-audit-page",
+      "viewport": [
+        390,
+        844
+      ],
+      "final": "/landing",
+      "metrics": {
+        "width": 390,
+        "scroll": 390,
+        "height": 844,
+        "scrollHeight": 6295,
+        "bodyLength": 3198,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 172
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1692
+          }
+        ]
+      }
+    },
+    {
+      "path": "/auth",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/auth",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 620,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 5976
+          }
+        ]
+      }
+    },
+    {
+      "path": "/welcome",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/welcome",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 568,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 144
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1532
+          }
+        ]
+      }
+    },
+    {
+      "path": "/pricing",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/pricing",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 672,
+        "bodyLength": 276,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 172
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1312
+          }
+        ]
+      }
+    },
+    {
+      "path": "/integrations",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/integrations",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 37404,
+        "bodyLength": 10309,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 188
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1260
+          }
+        ]
+      }
+    },
+    {
+      "path": "/terms",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/terms",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 3237,
+        "bodyLength": 2514,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 156
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1268
+          }
+        ]
+      }
+    },
+    {
+      "path": "/privacy",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/privacy",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 3124,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 152
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1304
+          }
+        ]
+      }
+    },
+    {
+      "path": "/checkout",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/auth?redirect=/checkout",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 620,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 148
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1324
+          }
+        ]
+      }
+    },
+    {
+      "path": "/unknown-audit-page",
+      "viewport": [
+        320,
+        568
+      ],
+      "final": "/landing",
+      "metrics": {
+        "width": 320,
+        "scroll": 320,
+        "height": 568,
+        "scrollHeight": 6509,
+        "bodyLength": 3198,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 240
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1872
+          }
+        ]
+      }
+    },
+    {
+      "path": "/auth",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/auth",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 740,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 6668
+          }
+        ]
+      }
+    },
+    {
+      "path": "/welcome",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/welcome",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 435,
+        "bodyLength": 118,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 200
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1552
+          }
+        ]
+      }
+    },
+    {
+      "path": "/pricing",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/pricing",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 5801,
+        "bodyLength": 2078,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 172
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1576
+          }
+        ]
+      }
+    },
+    {
+      "path": "/integrations",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/integrations",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 25071,
+        "bodyLength": 10309,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 220
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1424
+          }
+        ]
+      }
+    },
+    {
+      "path": "/terms",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/terms",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 2452,
+        "bodyLength": 2514,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 164
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1312
+          }
+        ]
+      }
+    },
+    {
+      "path": "/privacy",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/privacy",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 2342,
+        "bodyLength": 2494,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 152
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1260
+          }
+        ]
+      }
+    },
+    {
+      "path": "/checkout",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/auth?redirect=/checkout",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 740,
+        "bodyLength": 153,
+        "brokenImages": [],
+        "animatedReducedMotion": [
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit",
+          "auth-orbit"
+        ],
+        "colors": [
+          "oklch(0.72 0.2 153)",
+          "oklch(0.65 0.25 350)",
+          "oklch(0.46 0.09 63)",
+          "oklch(0.63 0.24 24)",
+          "oklch(0.69 0.14 179)",
+          "oklch(0.72 0.2 43)",
+          "oklch(0.59 0.23 258)",
+          "oklch(0.62 0.24 300)"
+        ],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 184
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1336
+          }
+        ]
+      }
+    },
+    {
+      "path": "/unknown-audit-page",
+      "viewport": [
+        844,
+        390
+      ],
+      "final": "/landing",
+      "metrics": {
+        "width": 844,
+        "scroll": 844,
+        "height": 390,
+        "scrollHeight": 5215,
+        "bodyLength": 3217,
+        "brokenImages": [],
+        "animatedReducedMotion": [],
+        "colors": [],
+        "paints": [
+          {
+            "name": "first-paint",
+            "ms": 160
+          },
+          {
+            "name": "first-contentful-paint",
+            "ms": 1584
+          }
+        ]
+      }
+    }
+  ],
+  "unauthenticatedApi": [
+    {
+      "endpoint": "chat",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "web-search",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "read-url",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "deep-research",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "mcp",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "transcribe",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "render-pdf",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "computer-agent",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "long-run",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "dev-agent",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    },
+    {
+      "endpoint": "anything",
+      "status": 401,
+      "body": "{\"error\":\"Unauthorized\"}"
+    }
+  ]
+}
