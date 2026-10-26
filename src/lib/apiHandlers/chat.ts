@@ -3,6 +3,7 @@ import { streamChatProxy, type ChatProxyPayload } from "../chat/proxyCore";
 import { streamDeepResearch } from "../research/deepResearchCore";
 import { guardApiRequest, guardResponse } from "../api/apiGuard";
 import { apiHeaders } from "../api/authenticateRequest";
+import { edgeAnonKey, edgeUrl } from "../edgeRuntime";
 
 export const config = { runtime: "nodejs", maxDuration: 300 };
 
@@ -35,5 +36,39 @@ export default async function handler(req: Request): Promise<Response> {
   if (!guard.ok) return guardResponse(guard, headers);
 
   const payload = (await req.json().catch(() => null)) as ChatProxyPayload | null;
-  return streamChatProxy(payload ?? {}, headers as unknown as Record<string, string>);
+  const local = await streamChatProxy(payload ?? {}, headers);
+  if (local.status !== 503 && local.status !== 502) return local;
+
+  // Imported deployments may keep their provider pools only in the existing
+  // hosted runtime. Relay there with the verified caller, never with an admin
+  // key, instead of returning a local-configuration 503 to the browser.
+  await local.body?.cancel();
+  const fn = payload?.lane === "fast" ? "chat-fast" : "chat-alibaba";
+  const authorization = req.headers.get("authorization");
+  if (!authorization) return guardResponse({ ok: false, status: 401 }, headers);
+  try {
+    const upstream = await fetch(edgeUrl(fn), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: edgeAnonKey(fn),
+        Authorization: authorization,
+      },
+      body: JSON.stringify(payload),
+      signal: req.signal,
+    });
+    const responseHeaders = new Headers(headers);
+    responseHeaders.set("Content-Type", upstream.headers.get("content-type") || "application/json");
+    if (upstream.headers.get("x-model-used")) {
+      responseHeaders.set("x-model-used", upstream.headers.get("x-model-used") || "");
+    }
+    if (upstream.headers.get("retry-after")) {
+      responseHeaders.set("Retry-After", upstream.headers.get("retry-after") || "");
+    }
+    return new Response(upstream.body, { status: upstream.status, headers: responseHeaders });
+  } catch (error) {
+    if (req.signal.aborted) throw error;
+    console.error("Hosted chat relay failed", { function: fn });
+    return new Response(JSON.stringify({ error: "Chat service is temporarily unavailable. Please try again." }), { status: 502, headers });
+  }
 }
