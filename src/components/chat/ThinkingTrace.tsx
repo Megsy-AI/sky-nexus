@@ -99,10 +99,8 @@ const ThinkingTrace = ({
 
   const KIND_AR: Record<string, string> = { search: "بيدوّر على الإنترنت", browse: "بيقرا الصفحات", code: "بيكتب ويشغّل كود", agent: "بيكلّم وكيل متخصص", video: "بيجهز الفيديو", image: "بيرسم الصورة", slides: "بيعمل الشرائح", docs: "بيكتب المستند", memory: "بيفتكر كلامكم", computer: "بيشتغل على الكمبيوتر", integration: "بيفتح تطبيقاتك", tool: "بيستخدم أداة" };
   const KIND_EN: Record<string, string> = { search: "Searching the web", browse: "Reading pages", code: "Writing and running code", agent: "Asking a specialist agent", video: "Making the video", image: "Drawing the image", slides: "Building slides", docs: "Writing the document", memory: "Recalling", computer: "Using the computer", integration: "Opening your apps", tool: "Using a tool" };
-  const IDLE_AR = ["بيفهم طلبك", "بيفكر", "بيرتّب الأفكار", "بيجهز الرد"];
-  const IDLE_EN = ["Understanding your request", "Thinking", "Organizing ideas", "Preparing the answer"];
   const kindLine = headerKind !== "thinking" ? (isAr ? KIND_AR : KIND_EN)[headerKind] : "";
-  const idle = (isAr ? IDLE_AR : IDLE_EN)[Math.min(3, Math.floor(elapsed / 4))];
+  const idle = isAr ? "جاري معالجة الطلب" : "Processing request";
   const liveLabel = live || kindLine || reasoningLines[reasoningLines.length - 1] || idle;
   const usedTools = variant === "tools" || history.length > 1;
   const label = active
@@ -134,12 +132,12 @@ const ThinkingTrace = ({
       >
         <ServiceIcon kind={headerKind} active={!!active} size={15} />
         <span
-          key={active ? label : "done"}
-          className={`min-w-0 whitespace-normal break-words text-[13px] motion-safe:animate-in motion-safe:fade-in motion-safe:duration-300 ${active ? "thinking-shimmer" : ""}`}
+          className={`min-w-0 whitespace-normal break-words text-[13px] ${active ? "thinking-shimmer" : ""}`}
           aria-live="polite"
         >
           {label}
         </span>
+        {active && elapsed > 0 && <span className="shrink-0 text-xs tabular-nums text-muted-foreground">{elapsed}{isAr ? " ث" : "s"}</span>}
         {lines.length > 0 && (
           <ChevronDown
             className={`h-3.5 w-3.5 shrink-0 opacity-60 transition-transform ${open ? "rotate-180" : ""}`}
@@ -148,7 +146,7 @@ const ThinkingTrace = ({
         )}
       </Button>
 
-      {open && lines.length > 0 && (
+      {(open || (active && history.length > 0)) && lines.length > 0 && (
         <ol className="relative mt-1.5 flex min-w-0 flex-col gap-2 ps-[7px]">
           <span aria-hidden className="absolute inset-y-1 start-[7px] w-px bg-border" />
           {lines.map((line, i) => (

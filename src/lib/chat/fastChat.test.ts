@@ -55,6 +55,20 @@ function rawSseResponse(frame: string) {
 describe("tryFastChat request options", () => {
   afterEach(() => vi.unstubAllGlobals());
 
+  it("emits the first greeting token before the provider finishes the stream", async () => {
+    let finish: (() => void) | undefined;
+    const onDelta = vi.fn();
+    const body = new ReadableStream<Uint8Array>({ start(controller) {
+      controller.enqueue(new TextEncoder().encode('data: {"choices":[{"delta":{"content":"أهلًا"}}]}\n\n'));
+      finish = () => { controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n')); controller.close(); };
+    } });
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(body, { headers: { "content-type": "text/event-stream" } })));
+    const turn = tryFastChat({ messages: [{ role: "user", content: "هلا" }], authToken: "t", fingerprint: "f", onDelta });
+    await vi.waitFor(() => expect(onDelta).toHaveBeenCalledWith("أهلًا"));
+    finish?.();
+    expect(await turn).toBe("answered");
+  });
+
   it("attaches the caller session to the local chat endpoint", async () => {
     const fetchMock = vi.fn().mockResolvedValue(sseResponse(["Hello"]));
     vi.stubGlobal("fetch", fetchMock);

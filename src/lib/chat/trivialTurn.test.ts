@@ -3,6 +3,7 @@ import { isTrivialTurn, shouldForceFastTurn } from "./trivialTurn";
 
 describe("isTrivialTurn", () => {
   it("recognizes Arabic greetings without relying on ASCII word boundaries", () => {
+    expect(isTrivialTurn([{ role: "user", content: "هلا" }])).toBe(true);
     expect(isTrivialTurn([{ role: "user", content: "تمام" }])).toBe(true);
     expect(isTrivialTurn([{ role: "user", content: "شكرًا" }])).toBe(true);
   });

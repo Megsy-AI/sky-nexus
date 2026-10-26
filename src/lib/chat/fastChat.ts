@@ -1,4 +1,5 @@
 import { edgeAnonKey, edgeUrl } from "@/lib/edgeRuntime";
+import { isTrivialTurn } from "./trivialTurn";
 /**
  * Fast lane for simple chat turns.
  *
@@ -209,7 +210,7 @@ export async function tryFastChat({
   // ("We need to generate an image using the tool. [[MEGSY_ESCALATE...]]").
   // Hold back the opening of the answer until it clearly is a real answer, so
   // such a hand-off never shows up in the chat.
-  const HOLD_CHARS = 320;
+  const HOLD_CHARS = isTrivialTurn(messages) ? 0 : 320;
   const anywhereSentinel = /\[\[\s*MEGSY_ESCALATE/i;
   let tail = "";
   const handleContent = (content: string) => {
