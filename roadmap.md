@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Redesign the composer + menu to match the supplied screenshot while preserving its real actions
 - [ ] Fix recurring “حصل تأخير في توليد الرد، لكن طلبك وصل” by tracing empty/incomplete generation handling, not hiding a real failure
 - [ ] Remove the two extra reply action buttons beside like/dislike/copy, keeping those three controls
 - [ ] Diagnose slow fast-model time-to-first-answer; remove avoidable waits and show clean real-time operation steps for long tasks without fabricated activity
