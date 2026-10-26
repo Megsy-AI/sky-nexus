@@ -1,4 +1,4 @@
-/** @doc useBrandLogo — returns the Megsy brand icon URL. */
+/** @doc useBrandLogo — returns the current display mark; legacy export stays compatible. */
 import { BRAND } from "@/lib/brand";
 
 const megsyIconUrl = BRAND.logoUrl;

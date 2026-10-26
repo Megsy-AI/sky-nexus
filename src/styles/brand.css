@@ -1,0 +1,5 @@
+/* The source is a black silhouette with transparent exterior and negative space. */
+:root { --brand-mark-filter: brightness(0); }
+html.dark, html[data-theme="dark"] { --brand-mark-filter: brightness(0) invert(1); }
+.welcome-root, .megsy-experience { --brand-mark-filter: brightness(0) invert(1); }
+.elgiza-brand-mark { filter: var(--brand-mark-filter) !important; }

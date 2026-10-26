@@ -1,4 +1,4 @@
-/** Display the supplied logo without recoloring its artwork. */
+/** Transparent mark follows the page theme; legacy image props stay compatible. */
 import { useBrandLogo } from "@/hooks/useBrandLogo";
 import { cn } from "@/lib/utils";
 import { BRAND } from "@/lib/brand";
@@ -13,7 +13,7 @@ export function BrandLogo({ className, style, alt = BRAND.logoAlt, ...props }: B
       <img
         src={src}
         alt={alt}
-        className={cn("object-contain", className)}
+        className={cn("elgiza-brand-mark object-contain", className)}
         style={style}
         {...props}
       />
