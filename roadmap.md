@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Fix disappearing bold chat text and non-rendering generated UI cards/choices; verify both with real or controlled model-format replies
 - [ ] Redesign the composer + menu to match the supplied screenshot while preserving its real actions
 - [ ] Fix recurring “حصل تأخير في توليد الرد، لكن طلبك وصل” by tracing empty/incomplete generation handling, not hiding a real failure
 - [ ] Remove the two extra reply action buttons beside like/dislike/copy, keeping those three controls
