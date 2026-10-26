@@ -1,5 +1,6 @@
 # Roadmap
-- [ ] Remove supplied logo background and adapt its mark to light/dark themes; update shared logo and app icons
+- [ ] Keep supplied logo orange with transparent exterior and cutout in both themes; update shared logo and app icons
+- [ ] Unify site palette to white, black and orange (user correction); preserve service status and third-party brand colors
 - [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
 - [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
 - [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal
