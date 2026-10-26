@@ -4,6 +4,7 @@ import AuthAgentOrbit from "@/components/auth/AuthAgentOrbit";
 import { AnimatePresence, m as motion, useReducedMotion } from "framer-motion";
 import { useUserLang } from "@/lib/authI18n";
 import { Button } from "@/components/ui/button";
+import { BrandLogo } from "@/components/brand/BrandLogo";
 
 interface Props {
   onGoogle: () => void; onGithub?: () => void; onEmail: () => void; onBack?: () => void; onClose?: () => void; onTelegram?: () => void;
@@ -22,7 +23,7 @@ export default function MobileAuthIntro(p: Props) {
     {p.expanded && <Button variant="ghost" type="button" className="megsy-auth-back" onClick={p.onBack} aria-label={ar ? "رجوع" : "Back"}><ArrowLeft size={20} /></Button>}
     <div className="megsy-auth-brand">
       <AuthAgentOrbit />
-      <div className="megsy-auth-brand-copy"><div className="megsy-auth-lockup"><h1>elgiza</h1></div><p className="megsy-auth-tagline">{ar ? <><span>فريقك من الوكلاء، جاهز دائمًا</span><span>لإنجاز شغلك.</span></> : <><span>Your team of always-on agents</span><span>that finish the work.</span></>}</p></div>
+      <div className="megsy-auth-brand-copy"><div className="megsy-auth-lockup"><BrandLogo className="h-12 w-12" /><h1>elgiza</h1></div><p className="megsy-auth-tagline">{ar ? <><span>فريقك من الوكلاء، جاهز دائمًا</span><span>لإنجاز شغلك.</span></> : <><span>Your team of always-on agents</span><span>that finish the work.</span></>}</p></div>
     </div>
     <section className="megsy-auth-actions">
       <AnimatePresence mode="wait" initial={false}><motion.div key={screen} initial={{ opacity: 0, y: reducedMotion ? 0 : 12, scale: reducedMotion ? 1 : .985 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: reducedMotion ? 0 : -6, scale: reducedMotion ? 1 : .985 }} transition={{ duration: reducedMotion ? 0 : .28, ease: [.22, 1, .36, 1] }}>
