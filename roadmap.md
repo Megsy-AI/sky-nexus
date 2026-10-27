@@ -41,4 +41,4 @@
 - [x] Thinking label changes per live state with shimmer
 
 - [x] Chat media + website-builder media moved to AgentSky; dead Runway/WaveSpeed/deAPI code removed from the app.
-- [ ] Server chat tool (chat-alibaba actionTools) and anything-api still call media-video/media-image; move them to AgentSky, then delete those services (keep the Browser Use computer agent).
+- [x] Chat tools + integrations service moved to AgentSky; old media providers removed (media-image/media-video-poll left as tiny "moved" stubs because the platform blocks deleting service folders; media-video now hosts only the browser agent).
