@@ -1,25 +1,8 @@
-// Parallel runner for the chat-driven media generation flow.
-// Image scenes use `anything-api` (Wan + server-side daily quota); video stays
-// on the existing media-video flow.
+// Parallel runner for chat media generation; every image/video goes through AgentSky.
 // together and reports progress via callbacks so the UI updates as each result lands.
 
-import { supabase } from "@/integrations/supabase/client";
 import type { MediaPlan, MediaPlanScene } from "@/components/chat/media/MediaPlanCard";
 import type { MediaSceneResult } from "@/components/chat/media/MediaResultCard";
-import { getRunwayVideoPolicy } from "@/lib/runwayModelPolicy";
-
-// Free and paid chat image generation use Wan through the server-side image
-// router. The router owns the free daily quota and never trusts this client slug.
-const IMAGE_FN = "anything-api";
-const FIXED_IMAGE_SLUG = "wan2.7-image";
-
-// Video job pacing depends on the provider. Alibaba Wan runs ~5–6 min end
-// to end, so we show a visible countdown before polling. deAPI usually
-// finishes within seconds, so we skip the wait and poll aggressively.
-const ALIBABA_POLL_INTERVAL_MS = 5_000;
-const ALIBABA_POLL_MAX_MS = 15 * 60_000;
-const DEAPI_POLL_INTERVAL_MS = 3_000;
-const DEAPI_POLL_MAX_MS = 5 * 60_000;
 
 interface ScenePartialCb {
   (index: number, previewDataUrl: string, progress: number): void;
@@ -52,9 +35,6 @@ function startProgressTicker(
     window.clearInterval(id);
   };
 }
-
-/** Last-resort image models: always-available slugs tried when the chosen one fails. */
-const IMAGE_FALLBACK_SLUGS = ["deapi-flux-schnell"];
 
 /** Every chat image/video now goes through AgentSky (one provider for the whole app). */
 async function generateViaAgentSky(
@@ -90,61 +70,6 @@ async function generateViaAgentSky(
   }
 }
 
-async function requestImage(
-  scene: MediaPlanScene,
-  modelSlug: string,
-  refs: string[],
-  aspectRatio?: string,
-): Promise<string> {
-  const routerModelSlug = modelSlug === "gen4_image_turbo" ? "runway-gen4-image-turbo" : modelSlug;
-  if (
-    /runway[-_]gen4[-_]image[-_]turbo|^gen4_image_turbo$/i.test(routerModelSlug) &&
-    refs.length === 0
-  ) {
-    throw new Error("selected image model requires a reference image");
-  }
-  const { data, error } = await supabase.functions.invoke(IMAGE_FN, {
-    body: {
-      prompt: scene.prompt,
-      model_slug: routerModelSlug,
-      model: routerModelSlug,
-      num_images: 1,
-      aspect_ratio: aspectRatio,
-      ...(/^(?:runway[-_])?(gpt_image_2_5_flare|gpt_image_2_5_sunburst|seedream5_pro|gpt_image_2|grok_imagine_image_2|muse_image|gemini_image3\.1_flash|gen4_image_turbo)$/i.test(
-        routerModelSlug,
-      )
-        ? { resolution: "1K" }
-        : {}),
-      ...(refs.length > 0
-        ? {
-            reference_image_url: refs[0],
-            image_url: refs[0],
-            reference_image_urls: refs,
-          }
-        : {}),
-    },
-  });
-  if (error) {
-    let detail = error.message || "image gen failed";
-    try {
-      const payload = await (error as any).context?.clone?.().json?.();
-      detail = payload?.message || payload?.error || detail;
-    } catch {
-      // FunctionsHttpError.context is not present in older supabase-js builds.
-    }
-    throw new Error(detail);
-  }
-  if (data?.paywall) {
-    const e = new Error(data.message || "Upgrade required");
-    (e as any).paywall = true;
-    throw e;
-  }
-  if (data?.error) throw new Error(data.message || data.error);
-  const url = data?.image_url || (Array.isArray(data?.image_urls) ? data.image_urls[0] : null);
-  if (!url) throw new Error("no image returned");
-  return url;
-}
-
 async function generateImageScene(
   scene: MediaPlanScene,
   modelSlug: string,
@@ -152,35 +77,6 @@ async function generateImageScene(
   aspectRatio?: string,
 ): Promise<string> {
   return generateViaAgentSky("image", scene, onPartial, aspectRatio);
-  // Legacy image router path below is kept for reference only.
-  const stopTicker = startProgressTicker(scene.index, 18_000, onPartial);
-  const refs: string[] = Array.isArray((scene as any).reference_image_urls)
-    ? ((scene as any).reference_image_urls as string[])
-    : scene.reference_image_url
-      ? [scene.reference_image_url]
-      : [];
-  // Never silently replace a requested Runway image with another provider.
-  // Other models retain their existing fallback chain.
-  void modelSlug;
-  void IMAGE_FALLBACK_SLUGS;
-  const attempts = [FIXED_IMAGE_SLUG];
-  try {
-    let lastErr: unknown = null;
-    for (const slug of attempts) {
-      try {
-        const url = await requestImage(scene, slug, refs, aspectRatio);
-        onPartial?.(scene.index, url, 1);
-        return url;
-      } catch (e) {
-        if ((e as any)?.paywall) throw e;
-        // Reference-only models fall through to the compatible fallback list.
-        lastErr = e;
-      }
-    }
-    throw lastErr instanceof Error ? lastErr : new Error("image gen failed");
-  } finally {
-    stopTicker();
-  }
 }
 
 async function generateVideoScene(
@@ -192,93 +88,6 @@ async function generateVideoScene(
 ): Promise<string> {
   void onCountdown;
   return generateViaAgentSky("video", scene, onPartial, aspectRatio);
-  const body: Record<string, unknown> = {
-    prompt: scene.prompt,
-    model_slug: modelSlug,
-    duration: Math.min(
-      scene.duration_seconds || 5,
-      getRunwayVideoPolicy(modelSlug)?.maxDuration ?? Infinity,
-    ),
-    aspect_ratio: scene.aspect_ratio || aspectRatio,
-  };
-  const runwayPolicy = getRunwayVideoPolicy(modelSlug);
-  if (runwayPolicy?.resolution) body.resolution = runwayPolicy.resolution;
-  if (runwayPolicy?.audio === false) body.audio = false;
-  if (scene.first_frame_url) body.start_frame = scene.first_frame_url;
-  if (scene.last_frame_url) body.end_frame = scene.last_frame_url;
-
-  // Videos are treated as async tasks: no fake percent bar while the provider
-  // is rendering. We surface a 5-minute countdown instead (see onCountdown).
-  onPartial?.(scene.index, "", NaN);
-
-  // The video service reserves the monthly allowance atomically. Do not
-  // consume it here as well or a single video costs two quota slots.
-  try {
-    const { data, error } = await supabase.functions.invoke("media-video", { body });
-    if (error) {
-      let detail = error.message || "video gen failed";
-      try {
-        const payload = await (error as any).context?.clone?.().json?.();
-        detail = payload?.message || payload?.error || detail;
-      } catch {
-        // FunctionsHttpError.context is not present in older supabase-js builds.
-      }
-      throw new Error(detail);
-    }
-    if (data?.paywall) throw new Error(data.message || "Upgrade required");
-    if (data?.error) throw new Error(data.message || data.error);
-
-    const directUrl = data?.video_url || data?.url;
-    if (directUrl) {
-      onPartial?.(scene.index, "", 1);
-      return String(directUrl);
-    }
-
-    const jobId = data?.job_id || data?.id;
-    if (!jobId) throw new Error("no video job id");
-
-    // Poll immediately for every provider — no blind waiting. Alibaba Wan
-    // tasks keep running server-side, so we just watch until they finish.
-    const isDeapi = String(jobId).startsWith("deapi:");
-    const pollInterval = isDeapi ? DEAPI_POLL_INTERVAL_MS : ALIBABA_POLL_INTERVAL_MS;
-    const pollMax = isDeapi ? DEAPI_POLL_MAX_MS : ALIBABA_POLL_MAX_MS;
-    onCountdown?.(scene.index, null);
-
-    const started = Date.now();
-    while (Date.now() - started < pollMax) {
-      const { data: poll, error: pollErr } = await supabase.functions.invoke("media-video-poll", {
-        body: { job_id: jobId },
-      });
-      if (!pollErr) {
-        const status = poll?.status;
-        const reported = Number(poll?.progress ?? poll?.percent ?? NaN);
-        if (Number.isFinite(reported) && reported > 0) {
-          const norm = reported > 1 ? Math.min(0.95, reported / 100) : Math.min(0.95, reported);
-          onPartial?.(scene.index, "", norm);
-        }
-        if (
-          status === "complete" ||
-          status === "completed" ||
-          status === "succeeded" ||
-          status === "success"
-        ) {
-          const u = poll?.video_url || poll?.url || poll?.output_url;
-          if (u) {
-            onPartial?.(scene.index, "", 1);
-            return String(u);
-          }
-          throw new Error("completed but no URL");
-        }
-        if (status === "failed" || status === "error" || status === "cancelled") {
-          throw new Error(poll?.error || "video job failed");
-        }
-      }
-      await new Promise((r) => setTimeout(r, pollInterval));
-    }
-    throw new Error("timeout");
-  } finally {
-    onCountdown?.(scene.index, null);
-  }
 }
 
 export interface RunMediaPlanOptions {
