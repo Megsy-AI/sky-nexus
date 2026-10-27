@@ -573,18 +573,20 @@ const MODELS = [
     kind: "video",
     label: "Higgsfield Video",
     tier: "pro",
-    provider: "wan",
-    endpoint: "wan2.7-t2v",
+    provider: "minimax",
+    endpoint: "MiniMax-H3",
   },
 ];
+// Published AgentSky catalog rates (USD).
 function costUsd(kind: "image" | "video", endpoint: string, seconds: number) {
   if (kind === "video")
     return /seedance|byteplus|bytedance/i.test(endpoint)
       ? seconds * 0.1672
       : /minimax/i.test(endpoint)
-        ? seconds * 0.088
-        : seconds * 0.02684;
-  if (/openai|gpt-image|dall/i.test(endpoint)) return 0.2321;
+        ? seconds * 0.056
+        : seconds * 0.0715;
+  if (/gpt-image/i.test(endpoint)) return 0.0247;
+  if (/gemini/i.test(endpoint)) return 0.045;
   if (/wan.*pro/i.test(endpoint)) return 0.053625;
   return 0.02145;
 }
@@ -636,12 +638,14 @@ async function runMediaOnGateway(
   const input =
     kind === "image"
       ? { prompt: prompt.slice(0, 5000), aspect_ratio: aspect }
-      : {
-          prompt: prompt.slice(0, 5000),
-          ratio: ratio(aspect),
-          duration: seconds,
-          resolution: "720P",
-        };
+      : model.provider === "minimax"
+        ? { prompt: prompt.slice(0, 5000), duration: seconds, resolution: "768P" }
+        : {
+            prompt: prompt.slice(0, 5000),
+            ratio: ratio(aspect),
+            duration: seconds,
+            resolution: "720P",
+          };
   return await gateway<any>("/run", {
     method: "POST",
     headers: { "Idempotency-Key": `${kind}-${uid}-${idempotencyKey}`.slice(0, 120) },

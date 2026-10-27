@@ -138,7 +138,7 @@ async function streamCerebras(
       continue;
     }
     if (resp.ok && resp.body) {
-      await markCerebrasUse(key);
+      void Promise.resolve(markCerebrasUse(key)).catch(() => {});
       return new Response(resp.body, {
         status: 200,
         headers: {
