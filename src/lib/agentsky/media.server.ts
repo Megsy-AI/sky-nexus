@@ -25,22 +25,25 @@ export const MEDIA_MODELS: MediaModel[] = [
     kind: "image",
     label: "Higgsfield Image",
     tier: "pro",
-    provider: "google",
-    endpoint: "gemini-3.1-flash-image-preview",
-    build: ({ prompt, aspect }) => ({ prompt, aspect_ratio: aspect }),
+    provider: "openai",
+    endpoint: "gpt-image-2",
+    build: ({ prompt, aspect }) => ({
+      prompt,
+      size: aspect === "9:16" ? "1024x1536" : aspect === "16:9" ? "1536x1024" : "1024x1024",
+      quality: "medium",
+    }),
   },
   {
     id: "vid-fast",
     kind: "video",
     label: "Higgsfield Video",
     tier: "pro",
-    provider: "wan",
-    endpoint: "wan2.7-t2v",
-    build: ({ prompt, aspect, duration }) => ({
+    provider: "minimax",
+    endpoint: "MiniMax-H3",
+    build: ({ prompt, duration }) => ({
       prompt,
-      ratio: ratio(aspect, ["16:9", "9:16", "1:1", "4:3", "3:4"], "16:9"),
       duration: Math.min(Math.max(duration ?? 5, 2), 5),
-      resolution: "720P",
+      resolution: "768P",
     }),
   },
 
