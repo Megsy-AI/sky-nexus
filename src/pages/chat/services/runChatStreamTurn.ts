@@ -1092,11 +1092,17 @@ export async function runChatStreamTurn(opts: RunChatStreamTurnOptions): Promise
                     while (!controller.signal.aborted) {
                       await new Promise((r) => setTimeout(r, 4000));
                       try {
-                        const { data, error } = await supabase.functions.invoke(
-                          "media-video-poll",
-                          { body: { job_id: jobId } },
-                        );
-                        if (error) continue;
+                        // Video jobs come from AgentSky as "agentsky:<runId>:<token>".
+                        const [, runId, runToken] = String(jobId).split(":");
+                        if (!runId || !runToken) return;
+                        const { mediaStatus } = await import("@/lib/agentsky/client");
+                        const st = await mediaStatus(runId, runToken).catch(() => null);
+                        if (!st) continue;
+                        const data: any = st.urls?.length
+                          ? { status: "completed", url: st.urls[0] }
+                          : /FAIL|ERROR|CANCEL/i.test(st.status || "")
+                            ? { status: "failed", error: st.error }
+                            : { status: "running" };
                         const status = data?.status;
                         if (
                           status === "complete" ||

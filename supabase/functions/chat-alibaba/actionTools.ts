@@ -419,39 +419,44 @@ export async function runActionTool(
         .join("\n");
     }
 
-    case "generate_image": {
-      const pick = (d: any) =>
-        d?.url ?? d?.image_url ?? d?.images?.[0]?.url ?? d?.output?.[0] ?? null;
-      const imageArgs = {
+    case "generate_image":
+    case "generate_video": {
+      // All media runs through AgentSky (single provider).
+      const kind = name === "generate_video" ? "video" : "image";
+      const run: any = await callFunction(ctx, "agentsky?path=media", {
+        kind,
         prompt: String(args?.prompt ?? ""),
-        aspect_ratio: args?.aspect_ratio ?? "1:1",
-      };
-      // Runway pool first (it has active keys), then the Wan pool as fallback.
-      let data: any = await callFunction(ctx, "media-image", imageArgs).catch((e: unknown) => ({
-        error: String(e),
-      }));
-      if (!pick(data)) {
-        const wan: any = await callFunction(ctx, "anything-api", {
-          ...imageArgs,
-          model_slug: "wan2.7-image",
-        }).catch((e: unknown) => ({ error: String(e) }));
-        if (pick(wan)) data = wan;
+        aspect: String(args?.aspect_ratio ?? (kind === "video" ? "16:9" : "1:1")),
+        duration: kind === "video" ? Number(args?.duration) || 5 : undefined,
+        idempotencyKey: crypto.randomUUID(),
+      }).catch((e: unknown) => ({ error: String(e) }));
+      const runId = run?.runId;
+      const token = run?.token;
+      if (!runId || !token)
+        return `${kind} failed: ${run?.error?.message ?? run?.message ?? run?.error ?? "unknown"}`;
+      if (kind === "video") {
+        ctx.send({ media: { kind: "video", job_id: `agentsky:${runId}:${token}` } });
+        return "video job started — it renders in the background and appears automatically.";
       }
-      const url = pick(data);
-      if (!url) return `image failed: ${data?.message ?? data?.error ?? "unknown"}`;
-      ctx.send({ media: { kind: "image", url } });
-      return `image ready: ${url}`;
+      const deadline = Date.now() + 90_000;
+      while (Date.now() < deadline) {
+        await new Promise((r) => setTimeout(r, 2500));
+        const st: any = await fetch(
+          `${FUNCTIONS_BASE}/agentsky?route=media-status&runId=${encodeURIComponent(runId)}&t=${encodeURIComponent(token)}`,
+          { headers: { apikey: Deno.env.get("SUPABASE_ANON_KEY") ?? "" } },
+        )
+          .then((r) => r.json())
+          .catch(() => null);
+        const url = st?.urls?.[0];
+        if (url) {
+          ctx.send({ media: { kind: "image", url } });
+          return `image ready: ${url}`;
+        }
+        if (/FAIL|ERROR|CANCEL/i.test(st?.status || "")) return `image failed: ${st?.error ?? "unknown"}`;
+      }
+      return "image is still rendering; it will need another try shortly.";
     }
 
-    case "generate_video": {
-      const data = await callFunction(ctx, "media-video", {
-        prompt: String(args?.prompt ?? ""),
-        aspect_ratio: args?.aspect_ratio ?? "16:9",
-      });
-      if (!data?.job_id) return `video failed: ${data?.message ?? data?.error ?? "unknown"}`;
-      ctx.send({ media: { kind: "video", job_id: data.job_id } });
-      return `video job ${data.job_id} started on ${data.provider ?? "provider"} — it renders in the background.`;
-    }
 
     case "create_slides": {
       const data = await callFunction(ctx, "slides-api", {
