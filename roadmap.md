@@ -39,3 +39,5 @@
 - [x] Chat renders clean HTML widgets (sandboxed)
 - [x] Agents page: truly real brand icons; Megsy = chat home robot
 - [x] Thinking label changes per live state with shimmer
+
+- [ ] Move app media (images/video via media-video, media-video-poll, media-image, anything-api) to AgentSky, then delete Runway/WaveSpeed/deAPI/Renderful code. Keep the computer agent (Browser Use) inside media-video separate.
