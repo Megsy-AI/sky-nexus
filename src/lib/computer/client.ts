@@ -40,7 +40,7 @@ export interface ComputerEvent {
 
 const SIGN_IN_MESSAGE = "سجّل الدخول أولاً لتشغيل مهام الكمبيوتر. / Please sign in to run computer tasks.";
 
-// The single agent (Browser Use Cloud, DeepSeek) is served by `media-video`
+// The browser agent (Browser Use Cloud) is hosted by the `media-video` function
 // under `kind: "agent"`.
 const SUPABASE_ANON_KEY = edgeAnonKey("media-video");
 const COMPUTER_AGENT_URL = edgeUrl("media-video");

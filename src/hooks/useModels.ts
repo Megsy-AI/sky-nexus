@@ -443,7 +443,7 @@ function alibabaRowToModelDetail(r: any): ModelDetail {
   } as ModelDetail;
 }
 
-// Video catalogue now served by WaveSpeedAI (see media-video edge function).
+// Video generation runs through AgentSky.
 const WAVESPEED_VIDEO_MODELS: Array<[string, string]> = [
   ["wavespeed-minimax-h3", "MiniMax H3"],
   ["wavespeed-seedance-2.0-mini", "Seedance 2.5"],
