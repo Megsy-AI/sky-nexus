@@ -11,7 +11,6 @@
  */
 import { supabase } from "@/integrations/supabase/client";
 import type { ProjectFile } from "@/lib/extractProjectFiles";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "@/lib/edgeRuntime";
 
 export const IMAGE_CREDITS = 2;
 export const VIDEO_CREDITS = 25;
@@ -87,20 +86,6 @@ export function findAssetRequests(files: ProjectFile[], siteTopic = ""): CoderAs
 /** Total credit cost for a set of requests. */
 export function estimateAssetCredits(reqs: Array<{ kind: CoderAssetKind }>): number {
   return reqs.reduce((n, r) => n + (r.kind === "video" ? VIDEO_CREDITS : IMAGE_CREDITS), 0);
-}
-
-async function authHeaders() {
-  const { data: { session } } = await supabase.auth.getSession();
-  const anon = SUPABASE_ANON_KEY as string;
-  return {
-    "Content-Type": "application/json",
-    apikey: anon,
-    Authorization: `Bearer ${session?.access_token || anon}`,
-  };
-}
-
-function fnUrl(name: string) {
-  return `${SUPABASE_URL}/functions/v1/${name}`;
 }
 
 /** Generate media through AgentSky (the app's single media provider) and wait for the hosted URL. */
