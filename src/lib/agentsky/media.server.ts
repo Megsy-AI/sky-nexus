@@ -17,7 +17,6 @@ export type MediaModel = {
   build: (p: { prompt: string; aspect: string; duration?: number }) => Record<string, unknown>;
 };
 
-const ratio = (a: string, allowed: string[], fallback: string) => (allowed.includes(a) ? a : fallback);
 
 export const MEDIA_MODELS: MediaModel[] = [
   {
