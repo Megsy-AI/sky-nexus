@@ -444,24 +444,9 @@ function alibabaRowToModelDetail(r: any): ModelDetail {
 }
 
 // Video generation runs through AgentSky.
-const WAVESPEED_VIDEO_MODELS: Array<[string, string]> = [
-  ["wavespeed-minimax-h3", "MiniMax H3"],
-  ["wavespeed-seedance-2.0-mini", "Seedance 2.5"],
-  ["wavespeed-openvideo", "OpenVideo"],
-  ["wavespeed-seedance-1.5-pro", "Seedance 1.5 Pro"],
-  ["wavespeed-hailuo-2.3", "Hailuo 2.3"],
-  ["wavespeed-grok-imagine-1.5", "Grok Imagine 1.5"],
-];
-const RUNWAY_IMAGE_MODELS: Array<[string, string]> = [
-  ["gpt_image_2_5_flare", "GPT Image 2.5 Flare"],
-  ["gpt_image_2_5_sunburst", "GPT Image 2.5 Sunburst"],
-  ["seedream5_pro", "Seedream 5.0 Pro"],
-  ["gpt_image_2", "GPT Image 2"],
-  ["grok_imagine_image_2", "Grok Imagine Image 2"],
-  ["muse_image", "Muse Image"],
-  ["gemini_image3.1_flash", "Nano Banana 2"],
-  ["gen4_image_turbo", "Gen-4 Image Turbo"],
-];
+// The app's media runs only on AgentSky: one image model and one video model.
+const WAVESPEED_VIDEO_MODELS: Array<[string, string]> = [["minimax-h3", "MiniMax H3"]];
+const RUNWAY_IMAGE_MODELS: Array<[string, string]> = [["gpt-image-2", "GPT Image 2"]];
 function runwayFallbackModels(): ModelDetail[] {
   const base = (slug: string, name: string, type: "image" | "video"): ModelDetail => ({
     id: `runway-${slug}`,
@@ -469,8 +454,8 @@ function runwayFallbackModels(): ModelDetail[] {
     name,
     type,
     credits: 1,
-    description: `${name} via Runway Dev`,
-    longDescription: `${name} from the official Runway Dev catalogue.`,
+    description: name,
+    longDescription: name,
     icon: type === "video" ? "Video" : "Image",
     modes:
       type === "video" ? ["text-to-video", "image-to-video"] : ["text-to-image", "image-to-image"],
@@ -478,11 +463,10 @@ function runwayFallbackModels(): ModelDetail[] {
     requiresImage: false,
     maxImages: type === "video" ? 1 : 4,
     acceptedMimeTypes: ["image/jpeg", "image/png", "image/webp"],
-    provider: "runway",
+    provider: "agentsky",
     speed: "standard",
     quality: "high",
-    iconUrl: PROVIDER_LOGO.runway,
-    badges: ["RUNWAY"],
+    badges: [],
     isPremium: true,
     isNew: true,
     isFeatured: /gen-4\.5|veo 3\.1|gpt image|gen-4 image|seedance 2\.5/i.test(name),
@@ -492,7 +476,7 @@ function runwayFallbackModels(): ModelDetail[] {
     ...WAVESPEED_VIDEO_MODELS.map(([slug, name]) => ({
       ...base(slug, name, "video"),
       id: slug,
-      provider: "wavespeed",
+      provider: "agentsky",
       description: name,
       longDescription: name,
       badges: [],
@@ -509,7 +493,7 @@ function mergeRunwayFallbacks(models: ModelDetail[]): ModelDetail[] {
   ];
 }
 
-const MODELS_CACHE_KEY = "megsy_cache_dynamic_models_v9";
+const MODELS_CACHE_KEY = "megsy_cache_dynamic_models_v10";
 const MODELS_CACHE_TTL = 24 * 60 * 60 * 1000; // 24h — admin-managed, rarely changes
 const MODEL_SOURCE_VERSION = "verified-live-v9";
 export const LOCAL_IMAGE_MODELS_KEY = "megsy_local_image_models_v1";
