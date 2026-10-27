@@ -103,31 +103,42 @@ function fnUrl(name: string) {
   return `${SUPABASE_URL}/functions/v1/${name}`;
 }
 
+/** Generate media through AgentSky (the app's single media provider) and wait for the hosted URL. */
+async function generateViaAgentSky(
+  kind: CoderAssetKind,
+  prompt: string,
+  signal?: AbortSignal,
+): Promise<string> {
+  const { agentApi, mediaStatus } = await import("@/lib/agentsky/client");
+  const run = await agentApi.media({
+    kind,
+    prompt,
+    aspect: kind === "video" ? "16:9" : "1:1",
+    duration: kind === "video" ? 5 : undefined,
+    idempotencyKey: crypto.randomUUID(),
+  });
+  const deadline = Date.now() + (kind === "video" ? 10 : 3) * 60_000;
+  while (Date.now() < deadline) {
+    if (signal?.aborted) throw new Error("aborted");
+    await new Promise((r) => setTimeout(r, kind === "video" ? 5_000 : 2_500));
+    const st = await mediaStatus(run.runId, run.token).catch(() => null);
+    if (!st) continue;
+    if (st.urls?.length) return st.urls[0];
+    if (/FAIL|ERROR|CANCEL/i.test(st.status || "")) throw new Error(st.error || `${kind} failed`);
+  }
+  throw new Error(`${kind} generation timed out`);
+}
+
 /** Generate a single image and return a hosted, publicly reachable URL. */
 export async function generateCoderImage(
   prompt: string,
   opts: { referenceImageUrl?: string; signal?: AbortSignal } = {},
 ): Promise<string> {
-  const resp = await fetch(fnUrl("media-video"), {
-    method: "POST",
-    headers: await authHeaders(),
-    signal: opts.signal,
-    body: JSON.stringify({
-      kind: "image",
-      prompt: `${prompt}. High quality, web-ready, clean composition, no text watermarks.`,
-      size: "1024x1024",
-      ...(opts.referenceImageUrl
-        ? { reference_image_url: opts.referenceImageUrl, image_url: opts.referenceImageUrl }
-        : {}),
-    }),
-  });
-  const text = await resp.text();
-  let json: any = null;
-  try { json = JSON.parse(text); } catch { /* ignore */ }
-  if (!resp.ok) throw new Error(json?.error || json?.message || `image failed (${resp.status})`);
-  const url = json?.image_url || json?.image_urls?.[0] || json?.url;
-  if (!url) throw new Error("image generation returned no url");
-  return url as string;
+  return generateViaAgentSky(
+    "image",
+    `${prompt}. High quality, web-ready, clean composition, no text watermarks.`,
+    opts.signal,
+  );
 }
 
 /** Generate a short video clip and return a hosted URL (polls until ready). */
@@ -135,36 +146,7 @@ export async function generateCoderVideo(
   prompt: string,
   opts: { signal?: AbortSignal } = {},
 ): Promise<string> {
-  const headers = await authHeaders();
-  const resp = await fetch(fnUrl("media-video"), {
-    method: "POST",
-    headers,
-    signal: opts.signal,
-    body: JSON.stringify({ prompt, duration: 5 }),
-  });
-  const text = await resp.text();
-  let json: any = null;
-  try { json = JSON.parse(text); } catch { /* ignore */ }
-  if (!resp.ok) throw new Error(json?.error || json?.message || `video failed (${resp.status})`);
-  const direct = json?.video_url || json?.url;
-  if (direct) return direct as string;
-  const jobId = json?.job_id || json?.task_id || json?.id;
-  if (!jobId) throw new Error("video generation returned no job");
-  const deadline = Date.now() + 10 * 60_000;
-  while (Date.now() < deadline) {
-    if (opts.signal?.aborted) throw new Error("aborted");
-    await new Promise((r) => setTimeout(r, 8_000));
-    const p = await fetch(fnUrl("media-video-poll"), {
-      method: "POST",
-      headers,
-      body: JSON.stringify({ job_id: jobId, task_id: jobId }),
-    });
-    const pj = await p.json().catch(() => null);
-    const url = pj?.video_url || pj?.url || pj?.output?.video_url;
-    if (url) return url as string;
-    if (pj?.status === "failed" || pj?.error) throw new Error(pj?.error || "video job failed");
-  }
-  throw new Error("video generation timed out");
+  return generateViaAgentSky("video", prompt, opts.signal);
 }
 
 /** Replace every resolved token/placeholder across all files. */
