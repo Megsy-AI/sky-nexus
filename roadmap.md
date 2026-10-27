@@ -15,7 +15,7 @@
 - [x] Verify protected agents/settings views with an authenticated session — no email-verification bypass; public selector did not render signed out
 - [x] Audit unused/legacy pages, provider paths, dependencies and duplicates; execute first conservative cleanup batch; report in docs/audits/elgiza-cleanup.md
 - [x] Apply elgiza name and supplied logo to central identity and primary public screens, metadata and installed-app icons; preserve service contracts
-- [ ] Complete remaining provider/dependency/CSS cleanup — requires deployment-consumer validation before removal
+- [x] Provider cleanup: pickers show only GPT Image 2 + MiniMax H3 (AgentSky); unused media price policy removed. CSS/dependency review still pending.
 - [ ] Complete secondary-page/export/server-copy rebrand and buttons/text consistency review with original-color media; protected settings/agents rendering requires a real session, dashboard project name/domain not changed
 - [x] Comprehensive available project audit: 98 automated tests, 114 desktop routes, 24 mobile checks, 11 unauthenticated API boundaries, security/dependency review and documented design/performance findings; report in docs/audits/project-audit-2026-10-26.md
 - [x] Continue audit without signing in or bypassing email verification; protected-page functional checks explicitly excluded per user instruction
