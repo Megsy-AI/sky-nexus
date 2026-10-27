@@ -565,8 +565,8 @@ const MODELS = [
     kind: "image",
     label: "Higgsfield Image",
     tier: "pro",
-    provider: "google",
-    endpoint: "gemini-3.1-flash-image-preview",
+    provider: "openai",
+    endpoint: "gpt-image-2",
   },
   {
     id: "vid-fast",
@@ -637,7 +637,11 @@ async function runMediaOnGateway(
   const model = MODELS.find((m) => m.kind === kind)!;
   const input =
     kind === "image"
-      ? { prompt: prompt.slice(0, 5000), aspect_ratio: aspect }
+      ? {
+          prompt: prompt.slice(0, 5000),
+          size: aspect === "9:16" ? "1024x1536" : aspect === "16:9" ? "1536x1024" : "1024x1024",
+          quality: "medium",
+        }
       : model.provider === "minimax"
         ? { prompt: prompt.slice(0, 5000), duration: seconds, resolution: "768P" }
         : {
